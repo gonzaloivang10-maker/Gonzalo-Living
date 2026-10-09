@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gonzalo Living | Muebles y Tapicería</title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #af7d32f5;
+            color: #2d2722;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* ENCABEZADO */
+
+        header {
+            background: #292019;
+            color: white;
+            padding: 22px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px #0003;
+        }
+
+        .logo {
+            font-size: 29px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .logo span,
+        .footer-columna h2 span {
+            color: #c7a77a;
+        }
+
+        nav {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: #c7a77a;
+        }
+
+        /* REDES LATERALES */
+
+        .redes-laterales {
+            position: fixed;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 999;
+        }
+
+        .redes-laterales a {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 21px;
+            box-shadow: 0 4px 12px #0004;
+            transition: .3s;
+        }
+
+        .redes-laterales a:hover {
+            transform: scale(1.12);
+        }
+
+        .instagram {
+            background: #d62976;
+        }
+
+        .whatsapp {
+            background: #25d366;
+        }
+
+        /* SLIDER DE INICIO */
+
+        .slider {
+            position: relative;
+            height: 650px;
+            overflow: hidden;
+            background: #292019;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .8s ease, visibility .8s;
+        }
+
+        .slide::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                90deg,
+                rgba(25, 19, 15, .78),
+                rgba(25, 19, 15, .38)
+            );
+        }
+
+        .slide.activo {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .slide-contenido {
+            position: relative;
+            z-index: 1;
+            max-width: 850px;
+            color: white;
+        }
+
+        .slide-contenido .etiqueta {
+            display: inline-block;
+            color: #e0c39b;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .slide h1 {
+            font-size: clamp(40px, 6vw, 72px);
+            margin-bottom: 20px;
+        }
+
+        .slide h1 span {
+            color: #d1b185;
+        }
+
+        .slide p {
+            font-size: 19px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .boton-principal {
+            display: inline-block;
+            background: #c7a77a;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .boton-principal:hover {
+            background: #a9885f;
+            transform: translateY(-3px);
+        }
+
+        .flecha-slider {
+            position: absolute;
+            z-index: 5;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border: 1px solid #ffffff80;
+            border-radius: 50%;
+            background: #ffffff24;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .flecha-slider:hover {
+            background: #c7a77a;
+        }
+
+        .anterior {
+            left: 25px;
+        }
+
+        .siguiente {
+            right: 25px;
+        }
+
+        .indicadores {
+            position: absolute;
+            bottom: 25px;
+            left: 0;
+            right: 0;
+            z-index: 5;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .indicador {
+            width: 11px;
+            height: 11px;
+            border: none;
+            border-radius: 50%;
+            background: #ffffff80;
+            cursor: pointer;
+        }
+
+        .indicador.activo {
+            background: #d1b185;
+            transform: scale(1.25);
+        }
+
+        /* TÍTULOS */
+
+        .titulo-seccion {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .titulo-seccion h2 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .titulo-seccion p {
+            color: #766c63;
+            line-height: 1.7;
+        }
+
+        /* CATEGORÍAS */
+
+        #categorias {
+            padding: 85px 8%;
+        }
+
+        .categorias-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .categoria {
+            height: 290px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px #0002;
+        }
+
+        .categoria img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .categoria:hover img {
+            transform: scale(1.09);
+        }
+
+        .categoria-info {
+            position: absolute;
+            inset: auto 0 0;
+            padding: 30px 22px 22px;
+            color: white;
+            background: linear-gradient(transparent, #000d);
+        }
+
+        .categoria-info h3 {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .categoria-info p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* PRODUCTOS */
+
+        #productos {
+            padding: 85px 8%;
+            background: #d48e32;
+        }
+
+        .grupo-productos {
+            margin-bottom: 70px;
+            scroll-margin-top: 110px;
+        }
+
+        .grupo-productos:last-child {
+            margin-bottom: 0;
+        }
+
+        .grupo-productos > h3 {
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .producto {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px #00000012;
+            transition: .3s;
+        }
+
+        .producto:hover {
+            transform: translateY(-6px);
+        }
+
+        .producto img {
+            width: 100%;
+            height: 225px;
+            object-fit: cover;
+        }
+
+        .producto-contenido {
+            padding: 23px;
+        }
+
+        .producto h4 {
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+
+        .producto p {
+            color: #756b63;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .boton-whatsapp {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 19px;
+            border-radius: 25px;
+            background: #25d366;
+            color: white;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .boton-whatsapp:hover {
+            background: #1da851;
+            transform: scale(1.03);
+        }
+
+        /* NOSOTROS */
+
+        #nosotros {
+            padding: 95px 9%;
+            background: #292019;
+            color: white;
+        }
+
+        .nosotros-contenedor {
+            max-width: 1150px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 55px;
+        }
+
+        .nosotros-imagen img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px #0005;
+        }
+
+        .nosotros-texto h2 {
+            font-size: 39px;
+            margin-bottom: 22px;
+        }
+
+        .nosotros-texto h2 span {
+            color: #c7a77a;
+        }
+
+        .nosotros-texto p {
+            color: #ddd;
+            line-height: 1.85;
+            margin-bottom: 16px;
+        }
+
+        .nosotros-lista {
+            margin-top: 24px;
+        }
+
+        .nosotros-lista div {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .nosotros-lista i {
+            color: #c7a77a;
+        }
+
+        /* SERVICIOS */
+
+        #servicios {
+            padding: 85px 8%;
+        }
+
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .servicio {
+            background: white;
+            text-align: center;
+            padding: 35px 24px;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px #0000000e;
+            transition: .3s;
+        }
+
+        .servicio:hover {
+            transform: translateY(-6px);
+        }
+
+        .servicio i {
+            font-size: 42px;
+            color: #b08d60;
+            margin-bottom: 20px;
+        }
+
+        .servicio h3 {
+            margin-bottom: 12px;
+        }
+
+        .servicio p {
+            color: #756b63;
+            line-height: 1.7;
+        }
+
+        /* CONTACTO */
+
+        #contacto {
+            padding: 75px 8%;
+            background: #d8c6ae;
+            text-align: center;
+        }
+
+        #contacto h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        #contacto p {
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        /* PIE DE PÁGINA */
+
+        footer {
+            background: #17120f;
+            color: white;
+            padding: 60px 8% 25px;
+        }
+
+        .footer-contenedor {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 35px;
+            margin-bottom: 40px;
+        }
+
+        .footer-columna h2 {
+            font-size: 27px;
+            margin-bottom: 18px;
+        }
+
+        .footer-columna h3 {
+            color: #c7a77a;
+            margin-bottom: 18px;
+        }
+
+        .footer-columna p {
+            color: #bbb;
+            line-height: 1.8;
+        }
+
+        .footer-columna ul {
+            list-style: none;
+        }
+
+        .footer-columna li {
+            margin-bottom: 12px;
+        }
+
+        .footer-columna ul a {
+            color: #bbb;
+            transition: .3s;
+        }
+
+        .footer-columna ul a:hover {
+            color: #c7a77a;
+            padding-left: 4px;
+        }
+
+        .footer-redes {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .footer-redes a {
+            width: 43px;
+            height: 43px;
+            border-radius: 50%;
+            background: #302820;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 19px;
+            transition: .3s;
+        }
+
+        .footer-redes a:hover {
+            background: #c7a77a;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            border-top: 1px solid #3c342e;
+            padding-top: 24px;
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* ADAPTACIÓN A CELULARES */
+
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column;
+                gap: 18px;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .nosotros-contenedor {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-contenedor {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .slider {
+                height: 570px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 20px 5%;
+            }
+
+            .logo {
+                font-size: 26px;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .slider {
+                height: 540px;
+            }
+
+            .slide {
+                padding: 25px 45px;
+            }
+
+            .slide h1 {
+                font-size: 39px;
+            }
+
+            .slide p {
+                font-size: 16px;
+            }
+
+            .flecha-slider {
+                width: 36px;
+                height: 36px;
+                font-size: 15px;
+            }
+
+            .anterior {
+                left: 8px;
+            }
+
+            .siguiente {
+                right: 8px;
+            }
+
+            #categorias,
+            #productos,
+            #servicios {
+                padding: 60px 6%;
+            }
+
+            .titulo-seccion h2,
+            #contacto h2 {
+                font-size: 30px;
+            }
+
+            .nosotros-texto h2 {
+                font-size: 32px;
+            }
+
+            .redes-laterales {
+                right: 8px;
+            }
+
+            .redes-laterales a {
+                width: 40px;
+                height: 40px;
+                font-size: 17px;
+            }
+
+            .footer-contenedor {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- BOTONES CIRCULARES LATERALES -->
+
+    <div class="redes-laterales">
+        <a href="https://www.instagram.com/gonzalo_living1903/"
+           target="_blank" rel="noopener noreferrer"
+           class="instagram" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a href="https://wa.me/5493515285779"
+           target="_blank" rel="noopener noreferrer"
+           class="whatsapp" aria-label="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- ENCABEZADO -->
+
+    <header>
+        <div class="logo">Gonzalo <span>Living</span></div>
+
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#categorias">Categorías</a>
+            <a href="#productos">Productos</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- INICIO CON SLIDER -->
+
+    <section class="slider" id="inicio">
+
+        <div class="slide activo"
+             style="background-image: url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1800&q=90');">
+
+            <div class="slide-contenido">
+                <span class="etiqueta">Diseño y confort</span>
+                <h1><span>Gonzalo Living</span></h1>
+                <p>
+                    Descubrí muebles que combinan comodidad,
+                    elegancia y personalidad para tu hogar.
+                </p>
+                <a href="#categorias" class="boton-principal">
+                    Explorar productos
+                </a>
+            </div>
+        </div>
+
+        <div class="slide"
+             style="background-image: url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1800&q=90');">
+
+            <div class="slide-contenido">
+                <span class="etiqueta">Tu espacio, tu estilo</span>
+                <h1>Un dormitorio <span>único</span></h1>
+                <p>
+                    Camas, respaldos y diseños pensados
+                    para transformar tus momentos de descanso.
+                </p>
+                <a href="#camas" class="boton-principal">
+                    Ver camas
+                </a>
+            </div>
+        </div>
+
+        <div class="slide"
+             style="background-image: url('https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1800&q=90');">
+
+            <div class="slide-contenido">
+                <span class="etiqueta">Renová tus ambientes</span>
+                <h1>Diseño que se siente</h1>
+                <p>
+                    Descubrí nuestros muebles y consultanos
+                    por opciones de tapicería y renovación.
+                </p>
+                <a href="https://wa.me/5493515285779?text=Hola%20Gonzalo%20Living,%20quiero%20hacer%20una%20consulta."
+                   target="_blank" rel="noopener noreferrer"
+                   class="boton-principal">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    Hacer una consulta
+                </a>
+            </div>
+        </div>
+
+        <button class="flecha-slider anterior"
+                type="button" aria-label="Imagen anterior">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <button class="flecha-slider siguiente"
+                type="button" aria-label="Imagen siguiente">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <div class="indicadores">
+            <button class="indicador activo" aria-label="Mostrar imagen 1"></button>
+            <button class="indicador" aria-label="Mostrar imagen 2"></button>
+            <button class="indicador" aria-label="Mostrar imagen 3"></button>
+        </div>
+
+    </section>
+
+    <!-- CATEGORÍAS -->
+
+    <section id="categorias">
+
+        <div class="titulo-seccion">
+            <h2>Nuestras categorías</h2>
+            <p style=color:white>Elegí una categoría para descubrir nuestros productos.</p>
+        </div>
+
+        <div class="categorias-grid">
+
+            <a href="#sillones" class="categoria">
+                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=85" alt="Sillones">
+                <div class="categoria-info">
+                    <h3>Sillones</h3>
+                    <p>Diseños modernos, clásicos y personalizados.</p>
+                </div>
+            </a>
+
+            <a href="#camas" class="categoria">
+                <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=85" alt="Camas">
+                <div class="categoria-info">
+                    <h3>Camas</h3>
+                    <p>Comodidad y estilo para tu dormitorio.</p>
+                </div>
+            </a>
+
+            <a href="#sillas" class="categoria">
+                <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=900&q=85" alt="Sillas">
+                <div class="categoria-info">
+                    <h3>Sillas</h3>
+                    <p>Diseños para comedores y distintos ambientes.</p>
+                </div>
+            </a>
+
+            <a href="#respaldos" class="categoria">
+                <img src="https://images.unsplash.com/photo-1550226891-ef816aed4a98?auto=format&fit=crop&w=900&q=85" alt="Respaldos">
+                <div class="categoria-info">
+                    <h3>Respaldos</h3>
+                    <p>Detalles tapizados para tu dormitorio.</p>
+                </div>
+            </a>
+
+            <a href="#tapizados" class="categoria">
+                <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=85" alt="Tapizados">
+                <div class="categoria-info">
+                    <h3>Tapizados</h3>
+                    <p>Renovación y restauración de muebles.</p>
+                </div>
+            </a>
+
+            <a href="#decoracion" class="categoria">
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=85" alt="Decoración">
+                <div class="categoria-info">
+                    <h3>Decoración</h3>
+                    <p>Detalles para completar tus ambientes.</p>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- PRODUCTOS -->
+
+    <section id="productos">
+
+        <div class="titulo-seccion">
+            <h2>Nuestros productos</h2>
+            <p style="color: white">Conocé las opciones y consultá por WhatsApp.</p>
+        </div>
+
+        <!-- SILLONES -->
+
+        <div class="grupo-productos" id="sillones">
+            <h3>🛋️ Sillones</h3>
+            <div class="productos-grid">
+
+                <article class="producto">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=85" alt="Sillón moderno">
+                    <div class="producto-contenido">
+                        <h4>Sillón Moderno</h4>
+                        <p>Un diseño actual, cómodo y versátil para tu living.</p>
+                        <a class="boton-whatsapp" target="_blank" rel="noopener noreferrer"
+                           href="https://wa.me/5493515285779?text=Hola%20Gonzalo%20Living,%20quiero%20consultar%20por%20el%20Sill%C3%B3n%20Moderno.">
+                            <i class="fa-brands fa-whatsapp"></i> Consultar
+                        </a>
+                    </div>
+                </article>
+
+                <article class="producto">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=900&q=85" alt="Sillón clásico">
+                    <div class="producto-contenido">
+                        <h4>Sillón Clásico</h4>
+                        <p>Una propuesta elegante para espacios acogedores.</p>
+                        <a class="boton-whatsapp" target="_blank" rel="noopener noreferrer"
+                           href="https://wa.me/5493515285779?text=Hola%20Gonzalo%20Living,%20quiero%20consultar%20por%20el%20Sill%C3%B3n%20Cl%C3%A1sico.">
+                            <i class="fa-brands fa-whatsapp"></i> Consultar
+                        </a>
+                    </div>
+                </article>
+
+                <article class="producto">
+                    <img src="https://images.unsplash.com/photo-1550254478-ead40cc54513?auto=format&fit=crop&w=900&q=85" alt="Sillón esquinero">
+                    <div class="producto-contenido">
+                        <h4>Sillón Esquinero</h4>
+                        <p>Ideal para aprovechar el espacio y compartir momentos.</p>
+                        <a class="boton-whatsapp" target="_blank" rel="noopener noreferrer"
+                           href="https://wa.me/5493515285779?text=Hola%20Gonzalo%20Living,%20quiero%20consultar%20por%20el%20Sill%C3%B3n%20Esquinero.">
+                            <i class="fa-brands fa-whatsapp"></i> Consultar
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+        <!-- CAMAS -->
+
+        <div class="grupo-productos" id="camas">
+            <h3>🛏️ Camas</h3>
+            <div class="productos-grid">
+
+                <article class="producto">
+                    <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=85" alt="Cama tapizada">
+                    <div class="producto-contenido">
+                        <h4>Cama Tapizada</h4>
+                        <p>Diseño elegante para renovar tu dormitorio.</p>
+                        <a class="boton-whatsapp" target="_blank" rel="noopener noreferrer"
+                           href="https://wa.me/5493515285779?text=Hola%20Gonzalo%20Living,%20quiero%20consultar%20por%20la%20Cama%20Tapizada.">
+                            <i class="fa-brands fa-whatsapp"></i> Consultar
+                        </a>
+                    </div>
+                </article>
+
+                <article class="producto">
+                    <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=85" alt="Cama king">
+                    <div class="producto-contenido">
+                        <h4>Cama King</h4>
+                        <p>Una alternativa espaciosa para tu descanso.</p>
+                        <a class="boton-whatsapp" target="_blank" rel="noopener noreferrer"
+                           href="https://wa.me/5493515285779?text=Hola%20Gonzalo%20Living,%20quiero%20consultar%20por%20la%20Cama%20King.">
+                            <i class="fa-brands fa-whatsapp"></i> Consultar
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+        <!-- SILLAS -->
+
+        <div class="grupo-productos" id="sillas">
+            <h3>🪑 Sillas</h3>
+            <div class="productos-grid">
+
+                <article class="producto">
+                    <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=900&q=85" alt="Silla tapizada">
+                    <div class="producto-contenido">
+                        <h4>Silla Tapizada</h4>
+                        <p>Comodidad y diseño para el comedor o el living.</p>
+                        <a class="boton-whatsapp" target="_blank" rel="noopener noreferrer"
+                           href="https://wa.me/5493515285779?text=Hola%20Gonzalo%20Living,%20quiero%20consultar%20por%20la%20Silla%20Tapizada.">
+                            <i class="fa-brands fa-whatsapp"></i> Consultar
+                        </a>
+                    </div>
+                </article>
+
+                <article class="producto">
+                    <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&w=900&q=85" alt="Silla moderna">
+                    <div class="producto-contenido">
+                        <h4>Silla Moderna</h4>
+                        <p>Un diseño versátil para distintos ambientes.</p>
+                        <a class="boton-whatsapp" target="_blank" rel="noopener noreferrer"
+                           href="https://wa.me/5493515285779?text=Hola%20Gonzalo%20Living,%20quiero%20consultar%20por%20la%20Silla%20Moderna.">
+                            <i class="fa-brands fa-whatsapp"></i> Consultar
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+        <!-- RESPALDOS -->
+
+        <div class="grupo-productos" id="respaldos">
+            <h3>🛏️ Respaldos</h3>
+            <div class="productos-grid">
+
+                <article class="producto">
+                    <img src="https://images.unsplash.com/photo-1550226891-ef816aed4a98?auto=format&fit=crop&w=900&q=85" alt="Respaldo capitoné">
+                    <div class="producto-contenido">
+                        <h4>Respaldo Capitonné</h4>
+                        <p>Un acabado acolchado que aporta elegancia.</p>
+                        <a class="boton-whatsapp" target="_blank" rel="noopener noreferrer"
+                           href="https://wa.me/5493515285779?text=Hola%20Gonzalo%20Living,%20quiero%20consultar%20por%20el%20Respaldo%20Capiton%C3%A9.">
+                            <i class="fa-brands fa-whatsapp"></i> Consultar
+                        </a>
+                    </div>
+                </article>
+
+                <article class="producto">
+                    <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=900&q=85" alt="Respaldo moderno">
+                    <div class="producto-contenido">
+                        <h4>Respaldo Moderno</h4>
+                        <p>Líneas simples para un dormitorio contemporáneo.</p>
+                        <a class="boton-whatsapp" target="_blank" rel="noopener noreferrer"
+                           href="https://wa.me/5493515285779?text=Hola%20Gonzalo%20Living,%20quiero%20consultar%20por%20el%20Respaldo%20Moderno.">
+                            <i class="fa-brands fa-whatsapp"></i> Consultar
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+        <!-- TAPIZADOS -->
+
+        <div class="grupo-productos" id="tapizados">
+            <h3>🧵 Tapizados</h3>
+            <div class="productos-grid">
+
+                <article class="producto">
+                    <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=85" alt="Tapizado de sillones">
+                    <div class="producto-contenido">
+                        <h4>Tapizado de Sillones</h4>
+                        <p>Renová la apariencia de tus sillones y muebles.</p>
+                        <a class="boton-whatsapp" target="_blank" rel="noopener noreferrer"
+                           href="https://wa.me/5493515285779?text=Hola%20Gonzalo%20Living,%20quiero%20consultar%20por%20el%20servicio%20de%20tapizado.">
+                            <i class="fa-brands fa-whatsapp"></i> Consultar
+                        </a>
+                    </div>
+                </article>
+
+                <article class="producto">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=85" alt="Restauración de muebles">
+                    <div class="producto-contenido">
+                        <h4>Restauración</h4>
+                        <p>Consultá por opciones para recuperar tus muebles.</p>
+                        <a class="boton-whatsapp" target="_blank" rel="noopener noreferrer"
+                           href="https://wa.me/5493515285779?text=Hola%20Gonzalo%20Living,%20quiero%20consultar%20por%20una%20restauraci%C3%B3n.">
+                            <i class="fa-brands fa-whatsapp"></i> Consultar
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+        <!-- DECORACIÓN -->
+
+        <div class="grupo-productos" id="decoracion">
+            <h3>✨ Decoración</h3>
+            <div class="productos-grid">
+
+                <article class="producto">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=85" alt="Complementos decorativos">
+                    <div class="producto-contenido">
+                        <h4>Complementos</h4>
+                        <p>Detalles decorativos para completar tus ambientes.</p>
+                        <a class="boton-whatsapp" target="_blank" rel="noopener noreferrer"
+                           href="https://wa.me/5493515285779?text=Hola%20Gonzalo%20Living,%20quiero%20consultar%20por%20los%20productos%20de%20decoraci%C3%B3n.">
+                            <i class="fa-brands fa-whatsapp"></i> Consultar
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- NOSOTROS -->
+
+    <section id="nosotros">
+        <div class="nosotros-contenedor">
+
+            <div class="nosotros-imagen">
+                <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1000&q=85"
+                     alt="Ambiente con muebles y decoración">
+            </div>
+
+            <div class="nosotros-texto">
+                <h2>Sobre <span>Gonzalo Living</span></h2>
+
+                <p>
+                    En Gonzalo Living nos apasiona el diseño de interiores
+                    y la posibilidad de transformar cada espacio en un
+                    lugar cómodo, funcional y lleno de personalidad.
+                </p>
+
+                <p>
+                    Nuestra propuesta reúne muebles, tapicería y distintas
+                    alternativas para el hogar. Buscamos combinar estética,
+                    comodidad y variedad de estilos para acompañar los
+                    gustos y necesidades de cada cliente.
+                </p>
+
+                <p>
+                    Contamos con categorías de sillones, camas, sillas,
+                    respaldos y complementos decorativos. También ofrecemos
+                    opciones de tapizado y renovación para quienes desean
+                    actualizar sus muebles y darles una nueva apariencia.
+                </p>
+
+                <p>
+                    Desde ambientes clásicos hasta espacios modernos,
+                    creemos que los muebles son una parte fundamental
+                    del hogar y de los momentos que compartimos en él.
+                </p>
+
+                <div class="nosotros-lista">
+                    <div><i class="fa-solid fa-check"></i> Variedad de estilos y diseños</div>
+                    <div><i class="fa-solid fa-check"></i> Opciones para distintos ambientes</div>
+                    <div><i class="fa-solid fa-check"></i> Servicios de tapicería y renovación</div>
+                    <div><i class="fa-solid fa-check"></i> Atención de consultas por WhatsApp</div>
+                </div>
+
+                <br>
+
+                <a href="https://wa.me/5493515285779?text=Hola%20Gonzalo%20Living,%20quiero%20conocer%20m%C3%A1s%20sobre%20sus%20productos."
+                   target="_blank" rel="noopener noreferrer"
+                   class="boton-principal">
+                    Conocé nuestros productos
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+
+    <section id="servicios">
+        <div class="titulo-seccion">
+            <h2>Nuestros servicios</h2>
+            <p style=" color:white">Soluciones para renovar y mejorar tus espacios.</p>
+        </div>
+
+        <div class="servicios-grid">
+
+            <div class="servicio">
+                <i class="fa-solid fa-couch"></i>
+                <h3>Tapicería</h3>
+                <p>Opciones para renovar sillones, sillas y diferentes muebles.</p>
+            </div>
+
+            <div class="servicio">
+                <i class="fa-solid fa-pen-ruler"></i>
+                <h3>Diseños personalizados</h3>
+                <p>Alternativas que se adaptan a distintos gustos y ambientes.</p>
+            </div>
+
+            <div class="servicio">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <h3>Restauración</h3>
+                <p>Consultá por posibilidades para recuperar tus muebles.</p>
+            </div>
+
+            <div class="servicio">
+                <i class="fa-solid fa-house"></i>
+                <h3>Diseño para el hogar</h3>
+                <p>Muebles y complementos para crear espacios acogedores.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+
+    <section id="contacto">
+        <h2>¿Encontraste lo que buscabas?</h2>
+        <p>Escribinos para consultar por productos, diseños y tapicería.</p>
+
+        <a href="https://wa.me/5493515285779?text=Hola%20Gonzalo%20Living,%20quiero%20hacer%20una%20consulta."
+           target="_blank" rel="noopener noreferrer"
+           class="boton-principal">
+            <i class="fa-brands fa-whatsapp"></i>
+            Consultar por WhatsApp
+        </a>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+
+    <footer>
+        <div class="footer-contenedor">
+
+            <div class="footer-columna">
+                <h2>Gonzalo <span>Living</span></h2>
+                <p>
+                    Muebles, tapicería y diseño para transformar tus espacios
+                    en lugares cómodos, modernos y llenos de personalidad.
+                </p>
+
+                <div class="footer-redes">
+                    <a href="https://www.instagram.com/gonzalo_living1903/"
+                       target="_blank" rel="noopener noreferrer"
+                       aria-label="Instagram de Gonzalo Living">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="https://wa.me/5493515285779"
+                       target="_blank" rel="noopener noreferrer"
+                       aria-label="WhatsApp de Gonzalo Living">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Navegación</h3>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#categorias">Categorías</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Productos</h3>
+                <ul>
+                    <li><a href="#sillones">Sillones</a></li>
+                    <li><a href="#camas">Camas</a></li>
+                    <li><a href="#sillas">Sillas</a></li>
+                    <li><a href="#respaldos">Respaldos</a></li>
+                    <li><a href="#tapizados">Tapizados</a></li>
+                    <li><a href="#decoracion">Decoración</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Información</h3>
+                <ul>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#nosotros">Sobre nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#inicio">Volver arriba ↑</a></li>
+                    <li>
+                        <a href="https://www.instagram.com/gonzalo_living1903/"
+                           target="_blank" rel="noopener noreferrer">
+                            Instagram
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://wa.me/5493515285779"
+                           target="_blank" rel="noopener noreferrer">
+                            WhatsApp
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 Gonzalo Living | Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <!-- FUNCIONAMIENTO DEL SLIDER -->
+
+    <script>
+        const slides = document.querySelectorAll(".slide");
+        const indicadores = document.querySelectorAll(".indicador");
+        const anterior = document.querySelector(".anterior");
+        const siguiente = document.querySelector(".siguiente");
+
+        let indiceActual = 0;
+        let temporizador;
+
+        function mostrarSlide(indice) {
+            slides[indiceActual].classList.remove("activo");
+            indicadores[indiceActual].classList.remove("activo");
+
+            indiceActual = (indice + slides.length) % slides.length;
+
+            slides[indiceActual].classList.add("activo");
+            indicadores[indiceActual].classList.add("activo");
+        }
+
+        function irSiguiente() {
+            mostrarSlide(indiceActual + 1);
+        }
+
+        function irAnterior() {
+            mostrarSlide(indiceActual - 1);
+        }
+
+        function reiniciarTemporizador() {
+            clearInterval(temporizador);
+            temporizador = setInterval(irSiguiente, 5000);
+        }
+
+        siguiente.addEventListener("click", () => {
+            irSiguiente();
+            reiniciarTemporizador();
+        });
+
+        anterior.addEventListener("click", () => {
+            irAnterior();
+            reiniciarTemporizador();
+        });
+
+        indicadores.forEach((indicador, indice) => {
+            indicador.addEventListener("click", () => {
+                mostrarSlide(indice);
+                reiniciarTemporizador();
+            });
+        });
+
+        reiniciarTemporizador();
+    </script>
+
+</body>
+</html>
