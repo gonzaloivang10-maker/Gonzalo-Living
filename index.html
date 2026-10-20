@@ -1,650 +1,911 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Gonzalo Living: muebles, sillones y tapicería personalizada. Consultá modelos, telas y colores por WhatsApp.">
-<meta name="theme-color" content="#101010">
-<title>Gonzalo Living | Muebles & Tapicería</title>
+<meta name="theme-color" content="#c41622">
+<title>Gonzalo Living | Tapicería y muebles</title>
+
 <style>
-:root{--red:#e51d35;--red-dark:#b80f25;--bg:#101010;--panel:#191919;--panel2:#222;--text:#f7f7f7;--muted:#b7b7b7;--line:#343434;--green:#18a765;--radius:16px;--max:1240px}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:88px}
-body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-body,button,input,select{font-family:Arial,Helvetica,sans-serif}
-img{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
-button{cursor:pointer}
-button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #ff7b89;outline-offset:3px}
-.container{width:min(var(--max),90%);margin-inline:auto}
-section{padding:72px 0}
-.section-heading{font-size:clamp(1.8rem,4vw,2.65rem);line-height:1.15;margin-bottom:10px}
-.section-heading span,.red{color:var(--red)}
-.section-lead{color:var(--muted);margin-bottom:28px;max-width:700px}
-.eyebrow{text-transform:uppercase;color:var(--red);letter-spacing:2px;font-weight:800;font-size:.78rem;margin-bottom:12px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:30px;border:1px solid var(--red);background:var(--red);color:#fff;font-weight:700;transition:transform .2s,background .2s,border-color .2s}
-.btn:hover{background:var(--red-dark);border-color:var(--red-dark);transform:translateY(-2px)}
-.btn.outline{background:transparent}
-.btn.small{padding:9px 13px;font-size:.86rem}
-.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
-.muted{color:var(--muted)}
-/* Header */
-header{position:sticky;top:0;z-index:1000;background:rgba(12,12,12,.96);border-bottom:1px solid #292929;backdrop-filter:blur(12px)}
-.navbar{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:22px}
-.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.brand-icon{font-size:35px}
-.brand-name{font-size:clamp(1.1rem,2.3vw,1.55rem);font-weight:900;letter-spacing:-.5px;line-height:1.2}
-.brand-name span{color:var(--red)}
-.brand small{display:block;font-size:9px;letter-spacing:2.5px;color:#bbb;text-align:center}
-.nav-links{display:flex;align-items:center;gap:19px}
-.nav-links>a:not(.btn){font-size:.88rem;color:#ddd}
-.nav-links>a:hover{color:var(--red)}
-.menu-toggle{display:none;background:none;border:0;color:#fff;font-size:28px}
-.cart-count{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 5px;background:#fff;color:#111;border-radius:50%;font-size:.72rem;margin-left:4px}
-/* Hero */
-.hero{min-height:520px;position:relative;display:flex;align-items:center;overflow:hidden;background:#222}
-.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .8s}
-.hero-bg.active{opacity:1}
-.hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.62) 48%,rgba(0,0,0,.12))}
-.hero-content{position:relative;z-index:2;padding:75px 0;width:min(var(--max),90%);margin:auto}
-.hero h1{font-size:clamp(2.6rem,6vw,4.8rem);line-height:1.04;max-width:720px;margin-bottom:18px}
-.hero p{max-width:540px;color:#eee;margin-bottom:25px}
-.hero-controls{position:absolute;z-index:3;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 18px;pointer-events:none}
-.hero-arrow{pointer-events:auto;width:44px;height:44px;border:1px solid #ffffff66;border-radius:50%;background:#0008;color:#fff;font-size:25px}
-.hero-arrow:hover{background:var(--red)}
-.dots{display:flex;gap:8px;margin-top:28px}
-.dot{width:10px;height:10px;border:0;border-radius:50%;background:#999}
-.dot.active{background:var(--red);transform:scale(1.2)}
-/* Trust strip */
-.trust{background:#171717;border-block:1px solid #292929}
-.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:20px 0}
-.trust-item{display:flex;align-items:center;gap:12px;color:#ddd;font-size:.9rem}
-.trust-icon{display:grid;place-items:center;width:42px;height:42px;border:1px solid #4a252a;border-radius:12px;color:var(--red);font-size:1.25rem;flex-shrink:0}
-/* Categories */
-.categories{background:#151515}
-.category-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
-.category-card{border:1px solid var(--line);border-radius:13px;overflow:hidden;background:#1d1d1d;transition:transform .2s,border-color .2s}
-.category-card:hover{transform:translateY(-4px);border-color:var(--red)}
-.category-card img{width:100%;height:125px;object-fit:cover}
-.category-copy{padding:13px}
-.category-copy h3{font-size:.96rem}
-.category-copy p{font-size:.78rem;color:var(--muted)}
-/* Catalog */
-.catalog{background:var(--bg)}
-.catalog-tools{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:24px 0 18px}
-.search-wrap{flex:1;min-width:220px;position:relative}
-.search-wrap input{width:100%;padding:13px 15px 13px 42px;border-radius:30px;background:#1d1d1d;border:1px solid #444;color:#fff}
-.search-icon{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:#aaa}
-.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:25px}
-.filter-btn{border:1px solid #444;background:#222;color:#eee;border-radius:25px;padding:9px 15px}
-.filter-btn.active,.filter-btn:hover{background:var(--red);border-color:var(--red)}
-.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
-.product-card{overflow:hidden;background:linear-gradient(145deg,#222,#151515);border:1px solid #333;border-radius:var(--radius);transition:transform .22s,border-color .22s}
-.product-card:hover{transform:translateY(-4px);border-color:#666}
-.product-card[hidden]{display:none}
-.product-photo{position:relative;background:#292929}
-.product-photo img{width:100%;height:205px;object-fit:cover}
-.product-tag{position:absolute;top:12px;left:12px;background:#111d;color:#fff;border:1px solid #ffffff40;border-radius:20px;padding:5px 9px;font-size:.72rem}
-.product-copy{padding:16px}
-.product-copy h3{font-size:1.04rem;margin-bottom:5px}
-.product-copy p{font-size:.86rem;color:var(--muted);min-height:42px}
-.product-meta{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:13px 0;color:#ddd;font-size:.8rem}
-.swatches{display:flex;gap:5px}
-.swatch-mini{width:13px;height:13px;border-radius:50%;border:1px solid #ffffff70}
-.product-actions{display:flex;gap:8px}
-.product-actions .btn{flex:1;font-size:.8rem;padding:10px 9px}
-.product-actions .details-btn{background:transparent;border-color:#555;flex:0 0 auto}
-.empty-state{padding:35px;text-align:center;border:1px dashed #555;border-radius:14px;color:var(--muted);display:none}
-.empty-state.show{display:block}
-/* Customizer */
-.customizer{background:linear-gradient(120deg,#181818,#101010)}
-.customizer-grid{display:grid;grid-template-columns:1fr 1fr;gap:38px;align-items:center}
-.custom-preview{position:relative;min-height:360px;border-radius:var(--radius);overflow:hidden;background:#242424}
-.custom-preview img{width:100%;height:360px;object-fit:cover;filter:brightness(.8)}
-.preview-label{position:absolute;left:16px;bottom:16px;background:#111d;border:1px solid #ffffff44;border-radius:12px;padding:10px 14px;font-size:.85rem}
-.custom-controls{background:#1b1b1b;border:1px solid #333;border-radius:var(--radius);padding:25px}
-.field-label{display:block;font-weight:700;margin:18px 0 9px}
-select{width:100%;padding:12px 14px;background:#111;color:#fff;border:1px solid #444;border-radius:10px}
-.color-options{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0}
-.color-choice{width:39px;height:39px;border:2px solid #777;border-radius:50%;outline:2px solid transparent;outline-offset:3px;position:relative}
-.color-choice.selected{outline-color:var(--red);border-color:#fff}
-.color-choice[aria-pressed="true"]:after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:white;text-shadow:0 1px 4px #000;font-weight:900}
-.color-name{color:#ddd;font-size:.9rem;min-height:25px;margin:10px 0 18px}
-.note{font-size:.78rem;color:#999;margin-top:12px}
-/* Fabric catalog */
-.fabric-intro{color:#aaa;font-size:.9rem;margin:6px 0 10px}
-.fabric-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:14px 0}
-.fabric-card{min-width:0;text-align:left;background:#111;border:1px solid #3a3a3a;border-radius:11px;overflow:hidden;color:#fff;padding:0;transition:border-color .2s,transform .2s}
-.fabric-card:hover{transform:translateY(-2px);border-color:#777}
-.fabric-card.selected{border:2px solid var(--red);box-shadow:0 0 0 2px #e51d3533}
-.fabric-texture{height:92px;display:block;position:relative;overflow:hidden;background-color:var(--fabric,#777);background-image:var(--texture-image);background-size:cover;background-position:center}
-.fabric-texture:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#ffffff12,transparent 40%,#00000012);pointer-events:none}
-.fabric-texture.linen{--texture-image:repeating-linear-gradient(0deg,#ffffff38 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,#00000020 0 1px,transparent 1px 4px),repeating-linear-gradient(35deg,transparent 0 5px,#ffffff18 5px 6px)}
-.fabric-texture.velvet{--texture-image:repeating-linear-gradient(105deg,#ffffff15 0 2px,transparent 2px 7px),linear-gradient(115deg,#ffffff25,transparent 35%,#00000030 70%,#ffffff12)}
-.fabric-texture.boucle{--texture-image:radial-gradient(circle at 2px 2px,#ffffff75 1px,transparent 2px),radial-gradient(circle at 5px 5px,#00000025 1px,transparent 2px);background-size:7px 7px,7px 7px}
-.fabric-texture.chenille{--texture-image:repeating-linear-gradient(0deg,#ffffff20 0 2px,transparent 2px 5px),repeating-linear-gradient(90deg,#00000018 0 2px,transparent 2px 6px),linear-gradient(120deg,#ffffff10,transparent 50%,#00000015)}
-.fabric-texture.microfiber{--texture-image:repeating-linear-gradient(45deg,#ffffff12 0 1px,transparent 1px 3px),repeating-linear-gradient(-45deg,#00000010 0 1px,transparent 1px 4px)}
-.fabric-card img.fabric-texture{width:100%;object-fit:cover}
-.fabric-info{padding:9px;font-size:.76rem;background:#111;min-height:53px}
-.fabric-info strong{display:block;font-size:.8rem}
-.fabric-info span{display:block;color:#aaa;font-size:.7rem;margin-top:3px}
-.fabric-hidden{display:none}
-.fabric-hidden.show{display:contents}
-#moreFabrics.show>.fabric-grid{display:contents}
-.fabric-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.fabric-actions .note{margin:0}
-.custom-preview img{transition:opacity .2s}
-@media(max-width:760px){.fabric-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:420px){.fabric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-/* About */
-.about{background:#181818}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
-.about-photo{height:410px;width:100%;object-fit:cover;border-radius:var(--radius)}
-.about-copy p{color:#bbb;margin:13px 0}
-.benefits{display:grid;grid-template-columns:repeat(2,1fr);gap:17px;margin:24px 0}
-.benefit{border-left:3px solid var(--red);padding-left:12px}
-.benefit strong{display:block}
-.benefit span{font-size:.82rem;color:#aaa}
-/* Before/after */
-.gallery{background:#f3f3f3;color:#171717}
-.gallery .section-lead{color:#555}
-.gallery-note{padding:14px 17px;background:#fff;border:1px dashed #aaa;border-radius:12px;color:#555;font-size:.9rem;margin-bottom:22px}
-.before-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.before-card{background:#fff;border:1px solid #ddd;border-radius:14px;overflow:hidden;box-shadow:0 5px 20px #0000000c}
-.compare{position:relative;overflow:hidden;height:245px;background:#ddd;--split:50%}
-.compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.compare .after-img{clip-path:inset(0 0 0 var(--split))}
-.compare .before-img{filter:grayscale(.55) brightness(.78)}
-.compare-line{position:absolute;top:0;bottom:0;left:var(--split);width:3px;background:white;box-shadow:0 0 0 1px #0005;pointer-events:none}
-.compare-line:after{content:"↔";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;background:white;color:#111;display:grid;place-items:center;font-weight:900;box-shadow:0 2px 8px #0003}
-.compare input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize}
-.compare-label{position:absolute;top:12px;padding:5px 9px;border-radius:20px;background:#111b;color:white;font-size:.72rem;pointer-events:none}
-.compare-label.before{left:12px}
-.compare-label.after{right:12px}
-.before-copy{padding:15px}
-.before-copy p{font-size:.85rem;color:#666;margin-top:5px}
-.gallery-actions{display:flex;justify-content:center;margin-top:25px}
-/* Reviews */
-.reviews{background:#e9e9e9;color:#171717}
-.reviews .section-lead{color:#555}
-.review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.review-card{background:#fff;border:1px solid #ddd;border-radius:14px;padding:22px}
-.stars{color:#e39a17;letter-spacing:3px;margin-bottom:9px}
-.review-card p{color:#555;font-size:.9rem;margin-bottom:13px}
-.review-card small{color:#777;display:block;margin-top:7px}
-/* Contact/footer */
-.contact{background:linear-gradient(#000c,#000d),url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=85') center/cover;text-align:center}
-.contact p{max-width:650px;margin:12px auto 25px;color:#ddd}
-footer{background:#090909;border-top:1px solid #292929;padding:42px 0 20px}
-.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:35px}
-footer h3{margin-bottom:12px}
-footer p{font-size:.88rem;color:#999;margin-top:15px}
-.footer-links{display:flex;flex-direction:column;gap:8px}
-.footer-links a{font-size:.88rem;color:#aaa}
-.footer-links a:hover{color:var(--red)}
-.socials{display:flex;gap:10px;margin-top:16px}
-.social{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;font-size:.75rem;font-weight:900;background:#252525;border:1px solid #444}
-.social.ig{background:#d62976;border-color:#d62976}
-.social.wa{background:var(--green);border-color:var(--green)}
-.copyright{border-top:1px solid #292929;margin-top:30px;padding-top:18px;text-align:center;color:#777;font-size:.78rem}
-.whatsapp-float{position:fixed;right:20px;bottom:20px;z-index:900;display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:var(--green);color:#fff;font-size:27px;box-shadow:0 5px 22px #0008;transition:transform .2s}
-.whatsapp-float:hover{transform:scale(1.08)}
-/* Modal */
-.modal{position:fixed;inset:0;z-index:2000;background:#000b;display:none;align-items:center;justify-content:center;padding:20px}
-.modal.open{display:flex}
-.modal-box{width:min(620px,100%);max-height:90vh;overflow:auto;background:#1b1b1b;border:1px solid #444;border-radius:18px;padding:25px;position:relative}
-.modal-close{position:absolute;right:14px;top:12px;border:0;background:#333;color:white;width:36px;height:36px;border-radius:50%;font-size:20px}
-.modal-box img{width:100%;height:240px;object-fit:cover;border-radius:12px;margin:12px 0}
-.modal-box p{color:#bbb;margin:8px 0 18px}
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
-.reveal.visible{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
-@media(max-width:1050px){.nav-links{gap:12px}.nav-links>a:not(.btn){font-size:.8rem}.category-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.product-photo img{height:190px}}
-@media(max-width:760px){section{padding:52px 0}.navbar{min-height:70px}.menu-toggle{display:block}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#101010;border-bottom:1px solid #333;padding:20px 5%;flex-direction:column;align-items:stretch}.nav-links.open{display:flex}.nav-links>a:not(.btn){font-size:.95rem}.nav-links .btn{align-self:flex-start}.hero{min-height:465px}.hero-content{padding:55px 0}.hero-bg:after{background:linear-gradient(90deg,#000d,#0008)}.hero-controls{padding:0 8px}.hero-arrow{width:38px;height:38px}.trust-grid{grid-template-columns:repeat(2,1fr)}.category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.product-photo img{height:160px}.product-copy{padding:12px}.product-copy h3{font-size:.95rem}.product-actions{flex-direction:column}.product-actions .details-btn{flex:auto}.customizer-grid,.about-grid{grid-template-columns:1fr;gap:25px}.custom-preview,.custom-preview img{min-height:280px;height:280px}.about-photo{height:300px}.before-grid,.review-grid{grid-template-columns:1fr}.compare{height:260px}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}}
-@media(max-width:420px){.brand-icon{font-size:28px}.brand-name{font-size:1rem}.brand small{font-size:7px;letter-spacing:2px}.hero h1{font-size:2.35rem}.product-grid{grid-template-columns:1fr}.product-photo img{height:225px}.footer-grid{grid-template-columns:1fr}.footer-grid>div:first-child{grid-column:auto}.benefits{gap:12px}.color-choice{width:35px;height:35px}}
+:root {
+  --red: #c41622;
+  --red-dark: #8e0d16;
+  --black: #101010;
+  --panel: #1b1b1b;
+  --border: #333;
+  --white: #f7f7f7;
+  --gray: #bdbdbd;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+img { display: block; width: 100%; object-fit: cover; }
+.container { width: min(1150px, 92%); margin: auto; }
+section { padding: 75px 0; }
+h2 { font-size: clamp(2rem, 4vw, 2.7rem); line-height: 1.2; margin-bottom: 12px; }
+.section-title { text-align: center; max-width: 720px; margin: 0 auto 35px; }
+.section-title p { color: var(--gray); }
+.eyebrow {
+  display: inline-block;
+  color: #ff5964;
+  font-size: .8rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 1px solid var(--red);
+  border-radius: 5px;
+  font-weight: bold;
+  transition: .2s;
+}
+.btn-red { background: var(--red); color: white; }
+.btn-red:hover { background: var(--red-dark); }
+.btn-outline:hover { background: var(--red); }
+.hidden { display: none !important; }
+
+/* ENCABEZADO */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #101010f5;
+  border-bottom: 1px solid #292929;
+}
+.nav {
+  min-height: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.logo { font-size: 1.2rem; font-weight: 900; line-height: 1.2; }
+.logo span {
+  display: block;
+  color: var(--red);
+  font-size: .7rem;
+  letter-spacing: 3px;
+  margin-top: 5px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: .9rem;
+}
+.nav-links a:hover, .footer-links a:hover { color: #ff5964; }
+.menu-toggle {
+  display: none;
+  color: white;
+  background: transparent;
+  border: 1px solid #444;
+  border-radius: 5px;
+  padding: 7px 11px;
+}
+
+/* SLIDER */
+.hero {
+  height: 570px;
+  position: relative;
+  overflow: hidden;
+  background: #171717;
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .7s ease;
+}
+.slide.active { opacity: 1; visibility: visible; }
+.slide > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,.93) 0%,
+    rgba(0,0,0,.75) 43%,
+    rgba(0,0,0,.12) 100%
+  );
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: min(1150px, 92%);
+  margin: 0 auto;
+  padding: 50px 0 75px;
+  text-align: left;
+}
+.hero-content h1 {
+  max-width: 700px;
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  line-height: 1.08;
+  margin: 12px 0 20px;
+}
+.hero-content h1 span { color: #ff3542; }
+.hero-content p {
+  max-width: 570px;
+  font-size: 1.08rem;
+  color: #e0e0e0;
+  margin: 0 0 25px;
+}
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 12px;
+}
+.slider-controls {
+  position: absolute;
+  z-index: 3;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.arrow {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: white;
+  background: #171717c9;
+  border: 1px solid #777;
+  font-size: 1.3rem;
+}
+.arrow:hover { background: var(--red); }
+.dot {
+  width: 11px;
+  height: 11px;
+  border: 1px solid white;
+  border-radius: 50%;
+  background: transparent;
+  padding: 0;
+}
+.dot.active { background: var(--red); border-color: var(--red); }
+
+/* FRANJA */
+.trust-strip { background: var(--red); padding: 17px 0; }
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* CATEGORÍAS */
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.category-card {
+  height: 260px;
+  position: relative;
+  border-radius: 9px;
+  overflow: hidden;
+}
+.category-card img { height: 100%; transition: transform .4s; }
+.category-card:hover img { transform: scale(1.06); }
+.category-card::after {
+  content: "";
+  position: absolute;
+  inset: 30% 0 0;
+  background: linear-gradient(transparent, #000e);
+}
+.category-info { position: absolute; z-index: 1; left: 20px; right: 15px; bottom: 18px; }
+.category-info h3 { font-size: 1.3rem; }
+.category-info p { color: #ddd; font-size: .9rem; }
+
+/* CATÁLOGO */
+.dark-section { background: #151515; }
+.catalog-tools {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.catalog-tools input, .catalog-tools select {
+  min-width: 220px;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #444;
+  background: var(--panel);
+  color: white;
+}
+.product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.product-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+}
+.product-card img { height: 225px; }
+.product-info {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: flex-start;
+}
+.product-info h3 { margin-bottom: 5px; }
+.product-info p { color: var(--gray); font-size: .92rem; margin-bottom: 17px; flex: 1; }
+.product-info .btn { text-align: center; width: 100%; margin-top: auto; }
+.empty-state { grid-column: 1 / -1; text-align: center; color: var(--gray); padding: 25px; }
+
+/* MUESTRARIO DE TELAS */
+.fabric-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+.fabric-card {
+  background: #111;
+  border: 1px solid #383838;
+  border-radius: 10px;
+  overflow: hidden;
+  min-width: 0;
+  transition: border-color .2s, transform .2s;
+}
+.fabric-card:hover { border-color: var(--red); transform: translateY(-2px); }
+.fabric-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: #292929;
+}
+.fabric-info { padding: 9px 8px 12px; }
+.fabric-info h3 { font-size: .92rem; line-height: 1.25; margin-bottom: 4px; }
+.fabric-info p { font-size: .78rem; color: #c3c3c3; line-height: 1.4; }
+.fabric-note { text-align: center; color: var(--gray); font-size: .85rem; margin-top: 20px; }
+.center { text-align: center; margin-top: 25px; }
+
+/* NOSOTROS */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.about-image { height: 410px; border-radius: 9px; }
+.about-copy p { color: var(--gray); margin-bottom: 15px; }
+.about-copy .btn { margin-top: 8px; }
+
+/* GALERÍA */
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.gallery-item { position: relative; overflow: hidden; border-radius: 8px; }
+.gallery-item img { height: 270px; transition: .3s; }
+.gallery-item:hover img { transform: scale(1.05); }
+.gallery-item span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px 14px 13px;
+  font-weight: bold;
+  background: linear-gradient(transparent, #000e);
+}
+
+/* CÓMO TRABAJAMOS */
+.process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.process-card { background: var(--panel); border: 1px solid var(--border); border-radius: 9px; padding: 24px; }
+.process-number {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  background: var(--red);
+  border-radius: 50%;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.process-card h3 { margin-bottom: 8px; }
+.process-card p { color: var(--gray); font-size: .93rem; }
+
+/* PREGUNTAS */
+.faq-list { max-width: 820px; margin: auto; display: grid; gap: 12px; }
+.faq-item { background: var(--panel); border: 1px solid var(--border); border-radius: 7px; padding: 0 18px; }
+.faq-item summary { cursor: pointer; list-style: none; padding: 17px 0; font-weight: bold; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; float: right; color: #ff5964; font-size: 1.2rem; }
+.faq-item[open] summary::after { content: "−"; }
+.faq-item p { color: var(--gray); padding-bottom: 17px; }
+
+/* CONTACTO */
+.contact-panel {
+  padding: 40px;
+  border-radius: 10px;
+  background: linear-gradient(120deg, #c41622, #790b12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+}
+.contact-panel p { max-width: 620px; color: #f4dddd; }
+.contact-panel .btn { background: #111; border-color: #111; }
+
+/* PIE DE PÁGINA RESTAURADO */
+footer {
+  background: #080808;
+  border-top: 1px solid #292929;
+  padding: 38px 0 20px;
+}
+.footer-main {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 45px;
+  padding-bottom: 32px;
+}
+.footer-brand { min-width: 0; }
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1.2;
+}
+.footer-logo .sofa-icon { font-size: 1.8rem; }
+.footer-logo .living { color: #ed1c35; }
+.footer-logo small {
+  display: block;
+  font-size: .58rem;
+  letter-spacing: 3px;
+  text-align: center;
+  font-weight: normal;
+  margin-top: 5px;
+}
+.footer-description { color: #aaa; font-size: .9rem; margin: 20px 0 17px; }
+.social-links { display: flex; gap: 10px; }
+.social-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: .82rem;
+  font-weight: bold;
+  color: white;
+  transition: transform .2s, filter .2s;
+}
+.social-circle:hover { transform: translateY(-3px); filter: brightness(1.1); }
+.social-instagram { background: #d92378; }
+.social-whatsapp { background: #10a866; }
+.footer-column h3 { font-size: 1.05rem; margin-bottom: 15px; }
+.footer-links { display: flex; flex-direction: column; gap: 9px; color: #bdbdbd; font-size: .87rem; }
+.footer-links a { width: fit-content; transition: color .2s; }
+.footer-bottom {
+  border-top: 1px solid #292929;
+  padding-top: 17px;
+  text-align: center;
+  color: #888;
+  font-size: .78rem;
+}
+
+/* WHATSAPP FLOTANTE */
+.whatsapp-float {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 90;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #10a866;
+  color: white;
+  font-size: 1.45rem;
+  box-shadow: 0 6px 20px #0008;
+  transition: transform .2s;
+}
+.whatsapp-float:hover { transform: scale(1.07); }
+
+/* ADAPTACIÓN A PANTALLAS */
+@media(max-width:850px) {
+  .nav-links { gap: 12px; font-size: .82rem; }
+  .product-grid, .cards { grid-template-columns: repeat(2, 1fr); }
+  .fabric-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .about-grid { gap: 25px; }
+  .footer-main { gap: 25px; }
+}
+@media(max-width:680px) {
+  section { padding: 58px 0; }
+  .nav { min-height: 68px; }
+  .menu-toggle { display: block; font-size: 1.2rem; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: #101010;
+    padding: 18px 5%;
+    border-bottom: 1px solid #333;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 5px 0; }
+  .hero { height: 540px; }
+  .hero-content h1 { font-size: 2.65rem; }
+  .hero-content { padding-bottom: 65px; }
+  .trust-grid, .process-grid, .gallery-grid { grid-template-columns: 1fr; }
+  .trust-grid { gap: 9px; }
+  .product-grid, .cards { grid-template-columns: 1fr; }
+  .category-card { height: 240px; }
+  .fabric-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .fabric-info { padding: 8px 6px 10px; }
+  .fabric-info h3 { font-size: .8rem; }
+  .fabric-info p { font-size: .72rem; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-image { height: 290px; }
+  .gallery-item img { height: 240px; }
+  .contact-panel { padding: 27px 22px; flex-direction: column; align-items: flex-start; }
+  .footer-main { grid-template-columns: 1fr 1fr; gap: 30px 20px; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-logo { font-size: 1.35rem; }
+  .footer-description { max-width: 400px; }
+  .whatsapp-float { right: 12px; bottom: 12px; }
+}
+@media(max-width:380px) {
+  .fabric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer-main { grid-template-columns: 1fr 1fr; }
+}
+@media(prefers-reduced-motion:reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}
 </style>
 </head>
+
 <body>
 <header>
-  <div class="container navbar">
-    <a class="brand" href="#inicio" aria-label="Gonzalo Living, inicio">
-      <span class="brand-icon" aria-hidden="true">🛋️</span>
-      <span><span class="brand-name">GONZALO<span>LIVING</span></span><small>TAPICERÍA &amp; MUEBLES</small></span>
-    </a>
+  <div class="container nav">
+    <a href="#inicio" class="logo">GONZALO LIVING<span>TAPICERÍA & MUEBLES</span></a>
     <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-    <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
-      <a href="#inicio">Inicio</a><a href="#categorias">Categorías</a><a href="#productos">Productos</a>
-      <a href="#personalizador">Personalizá</a><a href="#nosotros">Nosotros</a><a href="#galeria">Galería</a>
-      <a class="btn small" href="https://wa.me/5493515285779" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#inicio">Inicio</a>
+      <a href="#categorias">Categorías</a>
+      <a href="#productos">Productos</a>
+      <a href="#telas">Telas y colores</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto" class="btn btn-red">Contactanos</a>
     </nav>
   </div>
 </header>
 
 <main>
-<section class="hero" id="inicio" aria-label="Presentación de Gonzalo Living">
-  <div class="hero-bg active" style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1900&q=85')"></div>
-  <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1550254478-ead40cc54513?auto=format&fit=crop&w=1900&q=85')"></div>
-  <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1900&q=85')"></div>
-  <div class="hero-content">
-    <div class="eyebrow">Tapicería y muebles</div>
-    <h1>Tu espacio,<br><span class="red">tu estilo.</span></h1>
-    <p>Sillones, camas, sillas y tapicería personalizada para darle personalidad a tus ambientes.</p>
-    <a class="btn" href="https://wa.me/5493515285779?text=Hola%2C%20quiero%20consultar%20por%20los%20productos%20de%20Gonzalo%20Living." target="_blank" rel="noopener noreferrer">☏ Consultá por WhatsApp</a>
-    <div class="dots" aria-label="Elegir imagen de portada">
-      <button class="dot active" data-slide="0" aria-label="Mostrar imagen 1"></button>
-      <button class="dot" data-slide="1" aria-label="Mostrar imagen 2"></button>
-      <button class="dot" data-slide="2" aria-label="Mostrar imagen 3"></button>
+<!-- SLIDER -->
+<section class="hero" id="inicio">
+  <article class="slide active">
+    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1800&q=85" alt="Living con sillón" fetchpriority="high">
+    <div class="hero-content">
+      <span class="eyebrow">Diseño y comodidad</span>
+      <h1>Tu casa merece<br><span>sentirse como hogar.</span></h1>
+      <p>Descubrí muebles que combinan comodidad, estilo y personalidad para tus espacios.</p>
+      <div class="hero-buttons">
+        <a href="#productos" class="btn btn-red">Ver productos</a>
+        <a href="#contacto" class="btn btn-outline">Hacer una consulta</a>
+      </div>
     </div>
-  </div>
-  <div class="hero-controls">
-    <button class="hero-arrow" id="prevSlide" aria-label="Imagen anterior">‹</button>
-    <button class="hero-arrow" id="nextSlide" aria-label="Imagen siguiente">›</button>
+  </article>
+
+  <article class="slide">
+    <img src="https://images.unsplash.com/photo-1550254478-9365d2e9f2c5?auto=format&fit=crop&w=1800&q=85" alt="Inspiración para el hogar" loading="lazy">
+    <div class="hero-content">
+      <span class="eyebrow">Texturas y colores</span>
+      <h1>Una nueva tela.<br><span>Un nuevo ambiente.</span></h1>
+      <p>Explorá diferentes tonos y texturas para encontrar el estilo que mejor acompaña tu casa.</p>
+      <div class="hero-buttons">
+        <a href="#telas" class="btn btn-red">Ver telas disponibles</a>
+        <a href="https://wa.me/5493515285779" target="_blank" rel="noopener" class="btn btn-outline">Consultar opciones</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="slide">
+    <img src="https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?auto=format&fit=crop&w=1800&q=85" alt="Ambiente moderno" loading="lazy">
+    <div class="hero-content">
+      <span class="eyebrow">Renová tus espacios</span>
+      <h1>Tu idea, tu estilo.<br><span>Tu lugar favorito.</span></h1>
+      <p>Encontrá inspiración para darle nueva vida a tus muebles y disfrutar cada rincón.</p>
+      <div class="hero-buttons">
+        <a href="#categorias" class="btn btn-red">Explorar categorías</a>
+        <a href="https://wa.me/5493515285779" target="_blank" rel="noopener" class="btn btn-outline">Hablar por WhatsApp</a>
+      </div>
+    </div>
+  </article>
+
+  <div class="slider-controls">
+    <button class="arrow" id="prevSlide" aria-label="Diapositiva anterior">‹</button>
+    <button class="dot active" data-slide="0" aria-label="Diapositiva 1"></button>
+    <button class="dot" data-slide="1" aria-label="Diapositiva 2"></button>
+    <button class="dot" data-slide="2" aria-label="Diapositiva 3"></button>
+    <button class="arrow" id="nextSlide" aria-label="Diapositiva siguiente">›</button>
   </div>
 </section>
 
-<div class="trust"><div class="container trust-grid">
-  <div class="trust-item"><span class="trust-icon">✦</span><span><strong>Diseños variados</strong><br>Para diferentes estilos</span></div>
-  <div class="trust-item"><span class="trust-icon">◉</span><span><strong>Opciones a medida</strong><br>Consultá telas y colores</span></div>
-  <div class="trust-item"><span class="trust-icon">♡</span><span><strong>Atención cercana</strong><br>Te ayudamos a elegir</span></div>
-  <div class="trust-item"><span class="trust-icon">↻</span><span><strong>Renovación</strong><br>Consultá por tapizados</span></div>
-</div></div>
-
-<section class="categories" id="categorias"><div class="container">
-  <h2 class="section-heading">Explorá nuestras <span>categorías</span></h2>
-  <p class="section-lead">Encontrá el mueble que estás buscando.</p>
-  <div class="category-grid">
-    <a class="category-card" href="#productos" data-category-link="sillones"><img loading="lazy" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" alt="Sillón moderno"><div class="category-copy"><h3>Sillones ↗</h3><p>Estilo y comodidad</p></div></a>
-    <a class="category-card" href="#productos" data-category-link="camas"><img loading="lazy" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=600&q=80" alt="Cama de dormitorio"><div class="category-copy"><h3>Camas ↗</h3><p>Descanso y diseño</p></div></a>
-    <a class="category-card" href="#productos" data-category-link="sillas"><img loading="lazy" src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=600&q=80" alt="Silla moderna"><div class="category-copy"><h3>Sillas ↗</h3><p>Detalles que destacan</p></div></a>
-    <a class="category-card" href="#productos" data-category-link="sillones"><img loading="lazy" src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=600&q=80" alt="Sillón individual"><div class="category-copy"><h3>Individuales ↗</h3><p>Tu rincón favorito</p></div></a>
-    <a class="category-card" href="#productos" data-category-link="sillones"><img loading="lazy" src="https://images.unsplash.com/photo-1550254478-ead40cc54513?auto=format&fit=crop&w=600&q=80" alt="Sillón esquinero"><div class="category-copy"><h3>Esquineros ↗</h3><p>Aprovechá cada rincón</p></div></a>
-    <a class="category-card" href="#productos" data-category-link="otros"><img loading="lazy" src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=600&q=80" alt="Muebles de decoración"><div class="category-copy"><h3>Otros productos ↗</h3><p>Puffs, respaldos y más</p></div></a>
-  </div>
-</div></section>
-
-<section class="catalog" id="productos"><div class="container">
-  <h2 class="section-heading">Catálogo <span>destacado</span></h2>
-  <p class="section-lead">Buscá por nombre, filtrá por categoría y consultá cada producto directamente.</p>
-  <div class="catalog-tools">
-    <label class="search-wrap"><span class="search-icon" aria-hidden="true">⌕</span><input id="productSearch" type="search" placeholder="Buscar sillón, cama, silla..." aria-label="Buscar productos"></label>
-    <span class="muted" id="resultCount" aria-live="polite">8 productos</span>
-  </div>
-  <div class="filter-row" aria-label="Filtros de productos">
-    <button class="filter-btn active" data-filter="todos">Todos</button>
-    <button class="filter-btn" data-filter="sillones">Sillones</button>
-    <button class="filter-btn" data-filter="camas">Camas</button>
-    <button class="filter-btn" data-filter="sillas">Sillas</button>
-    <button class="filter-btn" data-filter="otros">Otros</button>
-  </div>
-  <div class="product-grid" id="productGrid">
-    <article class="product-card reveal" data-category="sillones" data-name="Sillón de tres cuerpos" data-description="Sillón amplio para compartir momentos y sumar comodidad al living." data-image="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=85">
-      <div class="product-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=700&q=85" alt="Sillón de tres cuerpos"><span class="product-tag">Destacado</span></div>
-      <div class="product-copy"><h3>Sillón de tres cuerpos</h3><p>Amplio y cómodo para tu living.</p><div class="product-meta"><span>Precio a consultar</span><span class="swatches"><i class="swatch-mini" style="background:#555"></i><i class="swatch-mini" style="background:#b7b7b7"></i><i class="swatch-mini" style="background:#8a352e"></i></span></div><div class="product-actions"><button class="btn ask-product">Consultar ↗</button><button class="btn details-btn" aria-label="Ver detalles de Sillón de tres cuerpos">Detalles</button></div></div>
-    </article>
-    <article class="product-card reveal" data-category="camas" data-name="Cama matrimonial" data-description="Una opción de dormitorio que combina presencia y comodidad. Consultá por medidas y terminaciones." data-image="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=85">
-      <div class="product-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=85" alt="Cama matrimonial"><span class="product-tag">Dormitorio</span></div>
-      <div class="product-copy"><h3>Cama matrimonial</h3><p>Diseño para tu dormitorio.</p><div class="product-meta"><span>Precio a consultar</span><span class="swatches"><i class="swatch-mini" style="background:#b5a79a"></i><i class="swatch-mini" style="background:#777"></i></span></div><div class="product-actions"><button class="btn ask-product">Consultar ↗</button><button class="btn details-btn" aria-label="Ver detalles de Cama matrimonial">Detalles</button></div></div>
-    </article>
-    <article class="product-card reveal" data-category="sillas" data-name="Silla tapizada" data-description="Silla para completar tu comedor o espacio de trabajo. Consultá por telas y colores." data-image="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=900&q=85">
-      <div class="product-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=700&q=85" alt="Silla tapizada"><span class="product-tag">Versátil</span></div>
-      <div class="product-copy"><h3>Silla tapizada</h3><p>Un detalle especial para tus ambientes.</p><div class="product-meta"><span>Precio a consultar</span><span class="swatches"><i class="swatch-mini" style="background:#ddd"></i><i class="swatch-mini" style="background:#333"></i></span></div><div class="product-actions"><button class="btn ask-product">Consultar ↗</button><button class="btn details-btn" aria-label="Ver detalles de Silla tapizada">Detalles</button></div></div>
-    </article>
-    <article class="product-card reveal" data-category="sillones" data-name="Sillón individual" data-description="Un asiento individual para crear un rincón de lectura o descanso." data-image="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=900&q=85">
-      <div class="product-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=700&q=85" alt="Sillón individual"><span class="product-tag">Confort</span></div>
-      <div class="product-copy"><h3>Sillón individual</h3><p>Un rincón para relajarte.</p><div class="product-meta"><span>Precio a consultar</span><span class="swatches"><i class="swatch-mini" style="background:#9b252d"></i><i class="swatch-mini" style="background:#333"></i></span></div><div class="product-actions"><button class="btn ask-product">Consultar ↗</button><button class="btn details-btn" aria-label="Ver detalles de Sillón individual">Detalles</button></div></div>
-    </article>
-    <article class="product-card reveal" data-category="sillones" data-name="Sillón esquinero" data-description="Una alternativa para aprovechar el espacio y sumar asientos al living. Consultá medidas." data-image="https://images.unsplash.com/photo-1550254478-ead40cc54513?auto=format&fit=crop&w=900&q=85">
-      <div class="product-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1550254478-ead40cc54513?auto=format&fit=crop&w=700&q=85" alt="Sillón esquinero"><span class="product-tag">Living</span></div>
-      <div class="product-copy"><h3>Sillón esquinero</h3><p>Más espacio para compartir.</p><div class="product-meta"><span>Precio a consultar</span><span class="swatches"><i class="swatch-mini" style="background:#888"></i><i class="swatch-mini" style="background:#ddd"></i></span></div><div class="product-actions"><button class="btn ask-product">Consultar ↗</button><button class="btn details-btn" aria-label="Ver detalles de Sillón esquinero">Detalles</button></div></div>
-    </article>
-    <article class="product-card reveal" data-category="otros" data-name="Puff tapizado" data-description="Mueble auxiliar versátil para sumar un asiento o complementar el living." data-image="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=900&q=85">
-      <div class="product-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=700&q=85" alt="Mueble auxiliar"><span class="product-tag">Complemento</span></div>
-      <div class="product-copy"><h3>Puff tapizado</h3><p>Práctico y versátil.</p><div class="product-meta"><span>Precio a consultar</span><span class="swatches"><i class="swatch-mini" style="background:#aaa"></i><i class="swatch-mini" style="background:#6d4a3e"></i></span></div><div class="product-actions"><button class="btn ask-product">Consultar ↗</button><button class="btn details-btn" aria-label="Ver detalles de Puff tapizado">Detalles</button></div></div>
-    </article>
-    <article class="product-card reveal" data-category="otros" data-name="Respaldo de cama" data-description="Un respaldo para darle carácter a tu dormitorio. Consultá medidas, telas y terminaciones." data-image="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=85">
-      <div class="product-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=700&q=85" alt="Respaldo y decoración de dormitorio"><span class="product-tag">Personalizable</span></div>
-      <div class="product-copy"><h3>Respaldo de cama</h3><p>Personalizá tu dormitorio.</p><div class="product-meta"><span>Precio a consultar</span><span class="swatches"><i class="swatch-mini" style="background:#b7a48c"></i><i class="swatch-mini" style="background:#444"></i></span></div><div class="product-actions"><button class="btn ask-product">Consultar ↗</button><button class="btn details-btn" aria-label="Ver detalles de Respaldo de cama">Detalles</button></div></div>
-    </article>
-    <article class="product-card reveal" data-category="otros" data-name="Tapizado y renovación" data-description="Consultá por la renovación de tus muebles y las opciones de tapizado disponibles." data-image="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=85">
-      <div class="product-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=85" alt="Ambiente con muebles"><span class="product-tag">Servicio</span></div>
-      <div class="product-copy"><h3>Tapizado y renovación</h3><p>Dale una nueva vida a tus muebles.</p><div class="product-meta"><span>Presupuesto a consultar</span><span class="swatches"><i class="swatch-mini" style="background:#777"></i><i class="swatch-mini" style="background:#a52a35"></i></span></div><div class="product-actions"><button class="btn ask-product">Consultar ↗</button><button class="btn details-btn" aria-label="Ver detalles de Tapizado y renovación">Detalles</button></div></div>
-    </article>
-  </div>
-  <div class="empty-state" id="emptyState">No encontramos productos con esa búsqueda. Probá con otra palabra o categoría.</div>
-</div></section>
-
-<section class="customizer" id="personalizador"><div class="container customizer-grid">
-  <div class="reveal">
-    <div class="eyebrow">Dale tu toque personal</div>
-    <h2 class="section-heading">Tu mueble, <span>a tu manera.</span></h2>
-    <p class="section-lead">Elegí el tipo de mueble y explorá telas y colores. La imagen cambia según tu selección. Las imágenes y muestras son ilustrativas, así que confirmá las opciones disponibles por WhatsApp.</p>
-    <div class="custom-preview">
-      <img id="previewImage" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=85" alt="Vista ilustrativa de un sillón">
-      <div class="preview-label" id="previewLabel">Sillón · Lino gris</div>
-    </div>
-    <p class="note">Vista de referencia. El resultado real puede variar según el modelo, la iluminación y la tela elegida.</p>
-  </div>
-  <div class="custom-controls reveal">
-    <h3>Personalizá tu consulta</h3>
-    <label class="field-label" for="furnitureType">1. ¿Qué mueble te interesa?</label>
-    <select id="furnitureType">
-      <option value="Sillón" data-image="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=85">Sillón</option>
-      <option value="Cama" data-image="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=85">Cama</option>
-      <option value="Silla" data-image="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=1000&q=85">Silla</option>
-      <option value="Respaldo de cama" data-image="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1000&q=85">Respaldo de cama</option>
-      <option value="Puff" data-image="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=1000&q=85">Puff</option>
-      <option value="Renovación de tapizado" data-image="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1000&q=85">Renovación de tapizado</option>
-    </select>
-
-    <span class="field-label">2. Elegí una tela</span>
-    <p class="fabric-intro">Explorá las muestras visuales de color y textura. Tocá una para elegirla; la disponibilidad se confirma por WhatsApp.</p>
-    <div class="fabric-grid" id="fabricGrid" role="group" aria-label="Catálogo de telas">
-      <button class="fabric-card selected" data-fabric="Lino gris" data-color="#777777" data-type="linen" aria-pressed="true">
-        <span class="fabric-texture linen" style="--fabric:#777777"></span><span class="fabric-info"><strong>Lino gris</strong><span>Textura natural</span></span>
-      </button>
-      <button class="fabric-card" data-fabric="Bouclé crudo" data-color="#ded5c8" data-type="boucle" aria-pressed="false">
-        <span class="fabric-texture boucle" style="--fabric:#ded5c8"></span><span class="fabric-info"><strong>Bouclé crudo</strong><span>Suave y texturado</span></span>
-      </button>
-      <button class="fabric-card" data-fabric="Terciopelo bordó" data-color="#762c36" data-type="velvet" aria-pressed="false">
-        <span class="fabric-texture velvet" style="--fabric:#762c36"></span><span class="fabric-info"><strong>Terciopelo bordó</strong><span>Brillo sutil</span></span>
-      </button>
-      <button class="fabric-card" data-fabric="Lino beige" data-color="#b9a58d" data-type="linen" aria-pressed="false">
-        <span class="fabric-texture linen" style="--fabric:#b9a58d"></span><span class="fabric-info"><strong>Lino beige</strong><span>Neutro y cálido</span></span>
-      </button>
-      <button class="fabric-card" data-fabric="Chenille azul" data-color="#40556c" data-type="chenille" aria-pressed="false">
-        <span class="fabric-texture chenille" style="--fabric:#40556c"></span><span class="fabric-info"><strong>Chenille azul</strong><span>Trama acogedora</span></span>
-      </button>
-      <div class="fabric-hidden" id="moreFabrics">
-        <div class="fabric-grid">
-          <button class="fabric-card" data-fabric="Lino natural" data-color="#cbbda8" data-type="linen" aria-pressed="false"><span class="fabric-texture linen" style="--fabric:#cbbda8"></span><span class="fabric-info"><strong>Lino natural</strong><span>Clásico</span></span></button>
-          <button class="fabric-card" data-fabric="Terciopelo verde" data-color="#315848" data-type="velvet" aria-pressed="false"><span class="fabric-texture velvet" style="--fabric:#315848"></span><span class="fabric-info"><strong>Terciopelo verde</strong><span>Profundo</span></span></button>
-          <button class="fabric-card" data-fabric="Chenille arena" data-color="#c7b9a4" data-type="chenille" aria-pressed="false"><span class="fabric-texture chenille" style="--fabric:#c7b9a4"></span><span class="fabric-info"><strong>Chenille arena</strong><span>Suave al tacto</span></span></button>
-          <button class="fabric-card" data-fabric="Microfibra negra" data-color="#292929" data-type="microfiber" aria-pressed="false"><span class="fabric-texture microfiber" style="--fabric:#292929"></span><span class="fabric-info"><strong>Microfibra negra</strong><span>Moderna</span></span></button>
-          <button class="fabric-card" data-fabric="Lino azul" data-color="#4e6880" data-type="linen" aria-pressed="false"><span class="fabric-texture linen" style="--fabric:#4e6880"></span><span class="fabric-info"><strong>Lino azul</strong><span>Fresco</span></span></button>
-          <button class="fabric-card" data-fabric="Bouclé gris claro" data-color="#bdbdb9" data-type="boucle" aria-pressed="false"><span class="fabric-texture boucle" style="--fabric:#bdbdb9"></span><span class="fabric-info"><strong>Bouclé gris claro</strong><span>Texturado</span></span></button>
-          <button class="fabric-card" data-fabric="Terciopelo mostaza" data-color="#b68b32" data-type="velvet" aria-pressed="false"><span class="fabric-texture velvet" style="--fabric:#b68b32"></span><span class="fabric-info"><strong>Terciopelo mostaza</strong><span>Cálido</span></span></button>
-          <button class="fabric-card" data-fabric="Chenille chocolate" data-color="#624739" data-type="chenille" aria-pressed="false"><span class="fabric-texture chenille" style="--fabric:#624739"></span><span class="fabric-info"><strong>Chenille chocolate</strong><span>Terroso</span></span></button>
-          <button class="fabric-card" data-fabric="Microfibra gris" data-color="#8b8b8b" data-type="microfiber" aria-pressed="false"><span class="fabric-texture microfiber" style="--fabric:#8b8b8b"></span><span class="fabric-info"><strong>Microfibra gris</strong><span>Práctica</span></span></button>
-          <button class="fabric-card" data-fabric="Lino verde oliva" data-color="#74795a" data-type="linen" aria-pressed="false"><span class="fabric-texture linen" style="--fabric:#74795a"></span><span class="fabric-info"><strong>Lino verde oliva</strong><span>Natural</span></span></button>
-        </div>
-      </div>
-    </div>
-    <div class="fabric-actions">
-      <button class="btn outline small" id="toggleFabrics" aria-expanded="false" aria-controls="moreFabrics">Ver más telas +</button>
-      <p class="note">Catálogo de referencia, no stock confirmado.</p>
-    </div>
-    <p class="color-name" id="colorName" aria-live="polite">Tela seleccionada: Lino gris</p>
-    <button class="btn" id="sendCustom">Consultar esta combinación ↗</button>
-    <p class="note">La selección no confirma stock, precio ni disponibilidad. Todo se verifica por WhatsApp.</p>
-  </div>
-</div></section>
-
-<section class="about" id="nosotros"><div class="container about-grid">
-  <img class="about-photo reveal" loading="lazy" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=85" alt="Sillón en un ambiente contemporáneo">
-  <div class="about-copy reveal">
-    <div class="eyebrow">Conocé nuestra propuesta</div>
-    <h2 class="section-heading">Gonzalo Living<br><span>creamos espacios.</span></h2>
-    <p>En Gonzalo Living nos dedicamos al mundo de los muebles y la tapicería. Buscamos combinar comodidad, diseño y funcionalidad para que cada espacio tenga su propia identidad.</p>
-    <p>Encontrá opciones de sillones, camas, sillas y muebles tapizados. También podés consultarnos por renovación y personalización según tus gustos y necesidades.</p>
-    <div class="benefits">
-      <div class="benefit"><strong>Diseños variados</strong><span>Alternativas para distintos ambientes.</span></div>
-      <div class="benefit"><strong>Personalización</strong><span>Consultá telas y colores.</span></div>
-      <div class="benefit"><strong>Atención cercana</strong><span>Te ayudamos con tus consultas.</span></div>
-      <div class="benefit"><strong>Renovación</strong><span>Consultá por tus muebles.</span></div>
-    </div>
-    <a class="btn" href="https://wa.me/5493515285779?text=Hola%2C%20quiero%20consultar%20por%20Gonzalo%20Living." target="_blank" rel="noopener noreferrer">Hablemos de tu proyecto ↗</a>
-  </div>
-</div></section>
-
-<section class="gallery" id="galeria"><div class="container">
-  <h2 class="section-heading">Antes y después: <span>la transformación</span></h2>
-  <p class="section-lead">Deslizá cada control para comparar las fotos. Reemplazá las imágenes de ejemplo por tus propias fotos de antes y después.</p>
-  <div class="gallery-note"><strong>Tu galería:</strong> las fotos de esta sección son ilustrativas, no trabajos atribuidos a Gonzalo Living. Cuando tengas tus imágenes, cambiá los dos enlaces de cada tarjeta por tus fotos reales.</div>
-  <div class="before-grid">
-    <article class="before-card reveal">
-      <div class="compare" style="--split:50%">
-        <img class="before-img" loading="lazy" src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=800&q=85" alt="Imagen de ejemplo antes de renovar">
-        <img class="after-img" loading="lazy" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=85" alt="Imagen de ejemplo después de renovar">
-        <span class="compare-label before">ANTES</span><span class="compare-label after">DESPUÉS</span><span class="compare-line"></span>
-        <input type="range" min="5" max="95" value="50" aria-label="Comparar antes y después del ejemplo 1">
-      </div>
-      <div class="before-copy"><h3>Renovación de sillón</h3><p>Reemplazá por el detalle de un trabajo real.</p></div>
-    </article>
-    <article class="before-card reveal">
-      <div class="compare" style="--split:50%">
-        <img class="before-img" loading="lazy" src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=800&q=85" alt="Imagen de ejemplo antes del trabajo">
-        <img class="after-img" loading="lazy" src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=800&q=85" alt="Imagen de ejemplo después del trabajo">
-        <span class="compare-label before">ANTES</span><span class="compare-label after">DESPUÉS</span><span class="compare-line"></span>
-        <input type="range" min="5" max="95" value="50" aria-label="Comparar antes y después del ejemplo 2">
-      </div>
-      <div class="before-copy"><h3>Tapizado personalizado</h3><p>Agregá qué se renovó y qué tela se eligió.</p></div>
-    </article>
-    <article class="before-card reveal">
-      <div class="compare" style="--split:50%">
-        <img class="before-img" loading="lazy" src="https://images.unsplash.com/photo-1550254478-ead40cc54513?auto=format&fit=crop&w=800&q=85" alt="Imagen ilustrativa previa">
-        <img class="after-img" loading="lazy" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=85" alt="Imagen ilustrativa posterior">
-        <span class="compare-label before">ANTES</span><span class="compare-label after">DESPUÉS</span><span class="compare-line"></span>
-        <input type="range" min="5" max="95" value="50" aria-label="Comparar antes y después del ejemplo 3">
-      </div>
-      <div class="before-copy"><h3>Resultado final</h3><p>Mostrá el resultado de uno de tus proyectos.</p></div>
-    </article>
-  </div>
-  <div class="gallery-actions"><a class="btn" href="https://wa.me/5493515285779?text=Hola%2C%20quiero%20consultar%20por%20un%20trabajo%20de%20tapicer%C3%ADa." target="_blank" rel="noopener noreferrer">Consultar por un trabajo ↗</a></div>
-</div></section>
-
-<section class="reviews" id="opiniones"><div class="container">
-  <h2 class="section-heading">Opiniones de <span>clientes</span></h2>
-  <p class="section-lead">Espacio preparado para publicar reseñas auténticas cuando las tengas.</p>
-  <div class="review-grid">
-    <article class="review-card reveal"><div class="stars" aria-label="Estrellas ilustrativas">★★★★★</div><p>Agregá acá una opinión real sobre el producto o el trabajo recibido.</p><strong>Nombre del cliente</strong><small>Reemplazar por una reseña real.</small></article>
-    <article class="review-card reveal"><div class="stars" aria-label="Estrellas ilustrativas">★★★★★</div><p>Compartí una experiencia auténtica de compra, atención o renovación.</p><strong>Nombre del cliente</strong><small>Reemplazar por una reseña real.</small></article>
-    <article class="review-card reveal"><div class="stars" aria-label="Estrellas ilustrativas">★★★★★</div><p>Podés incluir un comentario sobre el producto y el resultado final.</p><strong>Nombre del cliente</strong><small>Reemplazar por una reseña real.</small></article>
-  </div>
-</div></section>
-
-<section class="contact" id="contacto"><div class="container">
-  <div class="eyebrow">Estamos para ayudarte</div>
-  <h2 class="section-heading">¿Tenés un proyecto en mente?</h2>
-  <p>Contanos qué mueble buscás, qué estilo te gusta o qué querés renovar. Escribinos para consultar modelos, colores y precios.</p>
-  <a class="btn" href="https://wa.me/5493515285779?text=Hola%2C%20Gonzalo%20Living.%20Quiero%20hacer%20una%20consulta." target="_blank" rel="noopener noreferrer">Escribinos por WhatsApp ↗</a>
-</div></section>
-</main>
-
-<footer><div class="container">
-  <div class="footer-grid">
-    <div><a class="brand" href="#inicio"><span class="brand-icon">🛋️</span><span><span class="brand-name">GONZALO<span>LIVING</span></span><small>TAPICERÍA &amp; MUEBLES</small></span></a><p>Muebles y tapicería para crear espacios con estilo propio.</p><div class="socials"><a class="social ig" href="https://www.instagram.com/gonzalo_living1903/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a><a class="social wa" href="https://wa.me/5493515285779" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WA</a></div></div>
-    <div><h3>Explorá</h3><nav class="footer-links" aria-label="Enlaces principales"><a href="#inicio">Inicio</a><a href="#categorias">Categorías</a><a href="#productos">Productos</a><a href="#personalizador">Personalizá</a><a href="#nosotros">Nosotros</a></nav></div>
-    <div><h3>También podés ver</h3><nav class="footer-links" aria-label="Más enlaces"><a href="#galeria">Galería de trabajos</a><a href="#opiniones">Opiniones</a><a href="#contacto">Contacto</a><a href="https://www.instagram.com/gonzalo_living1903/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://wa.me/5493515285779" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a></nav></div>
-  </div>
-  <div class="copyright">© <span id="year"></span> Gonzalo Living | Tapicería &amp; Muebles.</div>
-</div></footer>
-
-<a class="whatsapp-float" href="https://wa.me/5493515285779?text=Hola%2C%20quiero%20hacer%20una%20consulta." target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">☏</a>
-
-<div class="modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal-box">
-    <button class="modal-close" id="closeModal" aria-label="Cerrar detalles">×</button>
-    <div class="eyebrow">Detalle del producto</div>
-    <h2 id="modalTitle">Producto</h2>
-    <img id="modalImage" src="" alt="">
-    <p id="modalDescription"></p>
-    <p class="muted">Precio, medidas, materiales y disponibilidad: consultar por WhatsApp.</p>
-    <button class="btn" id="modalAsk">Consultar este producto ↗</button>
+<div class="trust-strip">
+  <div class="container trust-grid">
+    <span>✦ Estilo para tus espacios</span>
+    <span>✦ Comodidad todos los días</span>
+    <span>✦ Atención personalizada</span>
   </div>
 </div>
 
+<!-- CATEGORÍAS -->
+<section id="categorias">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow">Encontrá tu estilo</span>
+      <h2>Explorá nuestras categorías</h2>
+      <p>Ideas y opciones para renovar los ambientes de tu casa.</p>
+    </div>
+    <div class="cards">
+      <a href="#productos" class="category-card" data-category-link="Sillones">
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80" alt="Sillones" loading="lazy">
+        <div class="category-info"><h3>Sillones</h3><p>Comodidad para compartir y descansar.</p></div>
+      </a>
+      <a href="#productos" class="category-card" data-category-link="Camas">
+        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80" alt="Camas y respaldos" loading="lazy">
+        <div class="category-info"><h3>Camas y respaldos</h3><p>Un espacio pensado para relajarte.</p></div>
+      </a>
+      <a href="#productos" class="category-card" data-category-link="Sillas">
+        <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=800&q=80" alt="Sillas" loading="lazy">
+        <div class="category-info"><h3>Sillas y otros muebles</h3><p>Detalles que completan cada ambiente.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="productos" class="dark-section">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow">Nuestro catálogo</span>
+      <h2>Productos destacados</h2>
+      <p>Encontrá una idea para tu espacio y consultanos por modelos, medidas y disponibilidad.</p>
+    </div>
+    <div class="catalog-tools">
+      <input id="productSearch" type="search" placeholder="Buscar un producto..." aria-label="Buscar productos">
+      <select id="categoryFilter" aria-label="Filtrar por categoría">
+        <option value="Todos">Todas las categorías</option>
+        <option value="Sillones">Sillones</option>
+        <option value="Camas">Camas y respaldos</option>
+        <option value="Sillas">Sillas</option>
+        <option value="Otros">Otros muebles</option>
+      </select>
+    </div>
+    <div class="product-grid" id="productGrid">
+      <article class="product-card" data-name="Sillón moderno" data-category="Sillones">
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80" alt="Sillón moderno" loading="lazy">
+        <div class="product-info"><h3>Sillón moderno</h3><p>Una opción cómoda y elegante para tu living.</p><a class="btn btn-outline product-whatsapp" href="#">Consultar por WhatsApp</a></div>
+      </article>
+      <article class="product-card" data-name="Sillón clásico" data-category="Sillones">
+        <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=800&q=80" alt="Sillón clásico" loading="lazy">
+        <div class="product-info"><h3>Sillón de estilo clásico</h3><p>Un diseño atemporal para darle carácter al ambiente.</p><a class="btn btn-outline product-whatsapp" href="#">Consultar por WhatsApp</a></div>
+      </article>
+      <article class="product-card" data-name="Cama tapizada" data-category="Camas">
+        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80" alt="Cama tapizada" loading="lazy">
+        <div class="product-info"><h3>Camas tapizadas</h3><p>Diseños para crear un dormitorio acogedor.</p><a class="btn btn-outline product-whatsapp" href="#">Consultar por WhatsApp</a></div>
+      </article>
+      <article class="product-card" data-name="Respaldo de cama" data-category="Camas">
+        <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=800&q=80" alt="Respaldo de cama" loading="lazy">
+        <div class="product-info"><h3>Respaldos</h3><p>Un detalle que aporta estilo y personalidad.</p><a class="btn btn-outline product-whatsapp" href="#">Consultar por WhatsApp</a></div>
+      </article>
+      <article class="product-card" data-name="Sillas tapizadas" data-category="Sillas">
+        <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=800&q=80" alt="Sillas tapizadas" loading="lazy">
+        <div class="product-info"><h3>Sillas tapizadas</h3><p>Renová el comedor con nuevos colores y texturas.</p><a class="btn btn-outline product-whatsapp" href="#">Consultar por WhatsApp</a></div>
+      </article>
+      <article class="product-card" data-name="Otros muebles" data-category="Otros">
+        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80" alt="Muebles para el hogar" loading="lazy">
+        <div class="product-info"><h3>Otros muebles</h3><p>Consultanos por opciones para completar tu hogar.</p><a class="btn btn-outline product-whatsapp" href="#">Consultar por WhatsApp</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MUESTRARIO DE TELAS -->
+<section id="telas">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow">Texturas y tonos</span>
+      <h2>Telas y colores disponibles</h2>
+      <p>Descubrí nuestro muestrario de telas para tapicería.</p>
+    </div>
+    <div class="fabric-grid">
+      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=80" alt="Lino gris" loading="lazy"><div class="fabric-info"><h3>Lino gris</h3><p>Textura natural</p></div></article>
+      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1600166898405-da9535204843?auto=format&fit=crop&w=400&q=80" alt="Bouclé crudo" loading="lazy"><div class="fabric-info"><h3>Bouclé crudo</h3><p>Suave y texturado</p></div></article>
+      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1550254478-9365d2e9f2c5?auto=format&fit=crop&w=400&q=80" alt="Terciopelo bordó" loading="lazy"><div class="fabric-info"><h3>Terciopelo bordó</h3><p>Brillo sutil</p></div></article>
+      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=400&q=80" alt="Lino beige" loading="lazy"><div class="fabric-info"><h3>Lino beige</h3><p>Neutro y cálido</p></div></article>
+      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=400&q=80" alt="Chenille azul" loading="lazy"><div class="fabric-info"><h3>Chenille azul</h3><p>Gama acogedora</p></div></article>
+      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=400&q=80" alt="Lino natural" loading="lazy"><div class="fabric-info"><h3>Lino natural</h3><p>Clásico</p></div></article>
+      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=400&q=80" alt="Terciopelo verde" loading="lazy"><div class="fabric-info"><h3>Terciopelo verde</h3><p>Profundo</p></div></article>
+      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=400&q=80" alt="Chenille arena" loading="lazy"><div class="fabric-info"><h3>Chenille arena</h3><p>Suave al tacto</p></div></article>
+      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=400&q=80" alt="Microfibra negra" loading="lazy"><div class="fabric-info"><h3>Microfibra negra</h3><p>Moderna</p></div></article>
+      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=400&q=80" alt="Lino azul" loading="lazy"><div class="fabric-info"><h3>Lino azul</h3><p>Fresco</p></div></article>
+      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1600166898405-da9535204843?auto=format&fit=crop&w=400&q=80" alt="Bouclé gris claro" loading="lazy"><div class="fabric-info"><h3>Bouclé gris claro</h3><p>Texturado</p></div></article>
+      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1550254478-9365d2e9f2c5?auto=format&fit=crop&w=400&q=80" alt="Terciopelo mostaza" loading="lazy"><div class="fabric-info"><h3>Terciopelo mostaza</h3><p>Cálido</p></div></article>
+      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=400&q=80" alt="Chenille chocolate" loading="lazy"><div class="fabric-info"><h3>Chenille chocolate</h3><p>Terroso</p></div></article>
+      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=400&q=80" alt="Microfibra gris" loading="lazy"><div class="fabric-info"><h3>Microfibra gris</h3><p>Práctica</p></div></article>
+      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=400&q=80" alt="Lino verde oliva" loading="lazy"><div class="fabric-info"><h3>Lino verde oliva</h3><p>Natural</p></div></article>
+    </div>
+    <p class="fabric-note">Las imágenes son ilustrativas. Consultá por WhatsApp para confirmar las telas, colores y disponibilidad reales.</p>
+    <div class="center">
+      <a class="btn btn-red" href="https://wa.me/5493515285779?text=Hola%2C%20quisiera%20consultar%20por%20las%20telas%20disponibles." target="_blank" rel="noopener">Consultar telas por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros" class="dark-section">
+  <div class="container about-grid">
+    <img class="about-image" src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1000&q=85" alt="Ambiente con muebles" loading="lazy">
+    <div class="about-copy">
+      <span class="eyebrow">Sobre Gonzalo Living</span>
+      <h2>Muebles que acompañan tu manera de vivir</h2>
+      <p>Nos inspira la idea de que cada ambiente puede reflejar tu estilo y convertirse en un lugar más cómodo.</p>
+      <p>Explorá nuestro catálogo, mirá el muestrario y escribinos para consultar por modelos, materiales y disponibilidad.</p>
+      <a class="btn btn-red" href="https://wa.me/5493515285779" target="_blank" rel="noopener">Hablemos de tu idea</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow">Inspiración para tu hogar</span>
+      <h2>Ideas para renovar tus espacios</h2>
+      <p>Referencias de estilos, ambientes y combinaciones.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80" alt="Living acogedor" loading="lazy"><span>Un living acogedor</span></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80" alt="Dormitorio moderno" loading="lazy"><span>Descanso con estilo</span></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80" alt="Ambiente moderno" loading="lazy"><span>Detalles que combinan</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO TRABAJAMOS -->
+<section id="proceso" class="dark-section">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow">Simple y directo</span>
+      <h2>Cómo trabajamos</h2>
+      <p>Te acompañamos para encontrar la opción que mejor se adapte a lo que buscás.</p>
+    </div>
+    <div class="process-grid">
+      <article class="process-card"><div class="process-number">1</div><h3>Explorá</h3><p>Mirá los productos, estilos y telas de referencia de la página.</p></article>
+      <article class="process-card"><div class="process-number">2</div><h3>Consultanos</h3><p>Escribinos para preguntar por medidas, materiales, precios y disponibilidad.</p></article>
+      <article class="process-card"><div class="process-number">3</div><h3>Encontrá tu opción</h3><p>Con la información confirmada, elegí la alternativa que mejor vaya con tu espacio.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- PREGUNTAS FRECUENTES -->
+<section id="preguntas">
+  <div class="container">
+    <div class="section-title"><span class="eyebrow">Información útil</span><h2>Preguntas frecuentes</h2></div>
+    <div class="faq-list">
+      <details class="faq-item"><summary>¿Cómo consulto el precio de un producto?</summary><p>Usá el botón de WhatsApp de cada producto para preguntar por el precio y la disponibilidad actual.</p></details>
+      <details class="faq-item"><summary>¿Las telas que aparecen son todas las disponibles?</summary><p>Las imágenes son referencias visuales. Escribinos para confirmar los colores, texturas y materiales disponibles en el momento.</p></details>
+      <details class="faq-item"><summary>¿Puedo consultar por un mueble que no aparece en el catálogo?</summary><p>¡Sí! Mandanos tu consulta por WhatsApp y contanos qué tipo de mueble estás buscando.</p></details>
+      <details class="faq-item"><summary>¿Cómo puedo contactarlos?</summary><p>Podés escribirnos directamente por WhatsApp o visitar nuestro Instagram desde los enlaces de esta página.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="container">
+    <div class="contact-panel">
+      <div>
+        <span class="eyebrow" style="color:#ffe0e2">Estamos para ayudarte</span>
+        <h2>¿Buscás renovar tu espacio?</h2>
+        <p>Consultanos por los muebles, telas y colores disponibles. Te ayudamos a encontrar una opción para tu hogar.</p>
+      </div>
+      <a class="btn" href="https://wa.me/5493515285779" target="_blank" rel="noopener">Escribir por WhatsApp ↗</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- PIE DE PÁGINA RESTAURADO -->
+<footer>
+  <div class="container">
+    <div class="footer-main">
+
+      <div class="footer-brand">
+        <a href="#inicio" class="footer-logo">
+          <span class="sofa-icon">🛋️</span>
+          <span>
+            GONZALO <span class="living">LIVING</span>
+            <small>TAPICERÍA &amp; MUEBLES</small>
+          </span>
+        </a>
+        <p class="footer-description">
+          Muebles y tapicería para crear espacios con estilo propio.
+        </p>
+        <div class="social-links">
+          <a class="social-circle social-instagram"
+             href="https://www.instagram.com/gonzalo_living1903/"
+             target="_blank" rel="noopener"
+             aria-label="Instagram">IG</a>
+          <a class="social-circle social-whatsapp"
+             href="https://wa.me/5493515285779"
+             target="_blank" rel="noopener"
+             aria-label="WhatsApp">WA</a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Explorá</h3>
+        <nav class="footer-links">
+          <a href="#inicio">Inicio</a>
+          <a href="#categorias">Categorías</a>
+          <a href="#productos">Productos</a>
+          <a href="#telas">Telas y colores</a>
+          <a href="#nosotros">Nosotros</a>
+        </nav>
+      </div>
+
+      <div class="footer-column">
+        <h3>También podés ver</h3>
+        <nav class="footer-links">
+          <a href="#galeria">Galería de trabajos</a>
+          <a href="#preguntas">Preguntas frecuentes</a>
+          <a href="#contacto">Contacto</a>
+          <a href="https://www.instagram.com/gonzalo_living1903/" target="_blank" rel="noopener">Instagram ↗</a>
+          <a href="https://wa.me/5493515285779" target="_blank" rel="noopener">WhatsApp ↗</a>
+        </nav>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © <span id="year"></span> Gonzalo Living | Tapicería &amp; Muebles.
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-float"
+   href="https://wa.me/5493515285779"
+   target="_blank" rel="noopener"
+   aria-label="Contactar por WhatsApp">☏</a>
+
 <script>
-const WHATSAPP = "5493515285779";
-function contactWhatsApp(message) {
-  const url = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(message);
-  window.open(url, "_blank", "noopener,noreferrer");
+// SLIDER AUTOMÁTICO Y MANUAL
+const slides = [...document.querySelectorAll(".slide")];
+const dots = [...document.querySelectorAll(".dot")];
+let currentSlide = 0;
+let sliderTimer;
+
+function showSlide(index) {
+  currentSlide = (index + slides.length) % slides.length;
+  slides.forEach((slide, i) =>
+    slide.classList.toggle("active", i === currentSlide)
+  );
+  dots.forEach((dot, i) =>
+    dot.classList.toggle("active", i === currentSlide)
+  );
 }
 
-// Mobile navigation
+function restartSlider() {
+  clearInterval(sliderTimer);
+  sliderTimer = setInterval(() => showSlide(currentSlide + 1), 6000);
+}
+
+document.getElementById("prevSlide").addEventListener("click", () => {
+  showSlide(currentSlide - 1);
+  restartSlider();
+});
+
+document.getElementById("nextSlide").addEventListener("click", () => {
+  showSlide(currentSlide + 1);
+  restartSlider();
+});
+
+dots.forEach(dot => dot.addEventListener("click", () => {
+  showSlide(Number(dot.dataset.slide));
+  restartSlider();
+}));
+
+restartSlider();
+
+// MENÚ PARA CELULARES
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
+
 menuToggle.addEventListener("click", () => {
   const open = navLinks.classList.toggle("open");
   menuToggle.setAttribute("aria-expanded", String(open));
-  menuToggle.textContent = open ? "×" : "☰";
+  menuToggle.textContent = open ? "✕" : "☰";
 });
-navLinks.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
-  navLinks.classList.remove("open");
-  menuToggle.setAttribute("aria-expanded", "false");
-  menuToggle.textContent = "☰";
-}));
 
-// Hero carousel
-const heroSlides = [...document.querySelectorAll(".hero-bg")];
-const heroDots = [...document.querySelectorAll(".dot")];
-let heroIndex = 0, heroTimer;
-function showHero(index) {
-  heroIndex = (index + heroSlides.length) % heroSlides.length;
-  heroSlides.forEach((slide, i) => slide.classList.toggle("active", i === heroIndex));
-  heroDots.forEach((dot, i) => dot.classList.toggle("active", i === heroIndex));
-}
-function startHeroTimer() {
-  clearInterval(heroTimer);
-  heroTimer = setInterval(() => showHero(heroIndex + 1), 5500);
-}
-document.getElementById("prevSlide").addEventListener("click", () => { showHero(heroIndex - 1); startHeroTimer(); });
-document.getElementById("nextSlide").addEventListener("click", () => { showHero(heroIndex + 1); startHeroTimer(); });
-heroDots.forEach(dot => dot.addEventListener("click", () => { showHero(Number(dot.dataset.slide)); startHeroTimer(); }));
-startHeroTimer();
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.textContent = "☰";
+  });
+});
 
-// Search + category filters
+// BÚSQUEDA Y FILTROS
 const searchInput = document.getElementById("productSearch");
+const categoryFilter = document.getElementById("categoryFilter");
 const productCards = [...document.querySelectorAll(".product-card")];
-const filterButtons = [...document.querySelectorAll(".filter-btn")];
-let activeFilter = "todos";
-function updateCatalog() {
-  const term = searchInput.value.trim().toLocaleLowerCase("es");
+
+function filterProducts() {
+  const query = searchInput.value.trim().toLocaleLowerCase("es");
+  const category = categoryFilter.value;
   let visible = 0;
+
   productCards.forEach(card => {
-    const matchesCategory = activeFilter === "todos" || card.dataset.category === activeFilter;
-    const haystack = (card.dataset.name + " " + card.dataset.description + " " + card.dataset.category).toLocaleLowerCase("es");
-    const matchesText = haystack.includes(term);
-    const show = matchesCategory && matchesText;
-    card.hidden = !show;
-    if (show) visible++;
+    const name = card.dataset.name.toLocaleLowerCase("es");
+    const matches = name.includes(query) &&
+      (category === "Todos" || card.dataset.category === category);
+
+    card.classList.toggle("hidden", !matches);
+    if (matches) visible++;
   });
-  document.getElementById("resultCount").textContent = visible + (visible === 1 ? " producto" : " productos");
-  document.getElementById("emptyState").classList.toggle("show", visible === 0);
-}
-searchInput.addEventListener("input", updateCatalog);
-filterButtons.forEach(button => button.addEventListener("click", () => {
-  activeFilter = button.dataset.filter;
-  filterButtons.forEach(item => item.classList.toggle("active", item === button));
-  updateCatalog();
-}));
-document.querySelectorAll("[data-category-link]").forEach(link => link.addEventListener("click", () => {
-  activeFilter = link.dataset.categoryLink;
-  filterButtons.forEach(button => button.classList.toggle("active", button.dataset.filter === activeFilter));
-  updateCatalog();
-}));
 
-// Product details modal + WhatsApp product inquiry
-const modal = document.getElementById("productModal");
-let selectedProduct = null;
-function openProductModal(card) {
-  selectedProduct = card;
-  document.getElementById("modalTitle").textContent = card.dataset.name;
-  document.getElementById("modalDescription").textContent = card.dataset.description;
-  document.getElementById("modalImage").src = card.dataset.image;
-  document.getElementById("modalImage").alt = card.dataset.name;
-  modal.classList.add("open");
-  document.getElementById("closeModal").focus();
+  let empty = document.getElementById("emptyProducts");
+
+  if (!empty) {
+    empty = document.createElement("p");
+    empty.id = "emptyProducts";
+    empty.className = "empty-state hidden";
+    empty.textContent = "No encontramos productos con esa búsqueda.";
+    document.getElementById("productGrid").appendChild(empty);
+  }
+
+  empty.classList.toggle("hidden", visible > 0);
 }
-function closeProductModal() {
-  modal.classList.remove("open");
-}
-productCards.forEach(card => {
-  card.querySelector(".ask-product").addEventListener("click", () => {
-    contactWhatsApp("Hola, Gonzalo Living. Quiero consultar por " + card.dataset.name + ". ¿Me informan precio, medidas y opciones disponibles?");
+
+searchInput.addEventListener("input", filterProducts);
+categoryFilter.addEventListener("change", filterProducts);
+
+// FILTRAR AL ELEGIR UNA CATEGORÍA
+document.querySelectorAll("[data-category-link]").forEach(link => {
+  link.addEventListener("click", () => {
+    categoryFilter.value = link.dataset.categoryLink;
+    filterProducts();
   });
-  card.querySelector(".details-btn").addEventListener("click", () => openProductModal(card));
-});
-document.getElementById("closeModal").addEventListener("click", closeProductModal);
-modal.addEventListener("click", event => { if (event.target === modal) closeProductModal(); });
-document.addEventListener("keydown", event => { if (event.key === "Escape") closeProductModal(); });
-document.getElementById("modalAsk").addEventListener("click", () => {
-  if (selectedProduct) contactWhatsApp("Hola, Gonzalo Living. Quiero consultar por " + selectedProduct.dataset.name + ". ¿Me informan precio, medidas y opciones disponibles?");
 });
 
-// Furniture + fabric customizer
-const furnitureType = document.getElementById("furnitureType");
-const previewImage = document.getElementById("previewImage");
-const previewLabel = document.getElementById("previewLabel");
-const colorName = document.getElementById("colorName");
-const fabricChoices = [...document.querySelectorAll(".fabric-card")];
-const moreFabrics = document.getElementById("moreFabrics");
-const toggleFabrics = document.getElementById("toggleFabrics");
-let selectedFabric = { name: "Lino gris", color: "#777777", type: "linen" };
+// WHATSAPP PARA CADA PRODUCTO
+document.querySelectorAll(".product-whatsapp").forEach(link => {
+  const name = link.closest(".product-card").dataset.name;
+  const message = `Hola, quisiera consultar por ${name}. ¿Me podrían informar el precio y la disponibilidad?`;
 
-function updatePreview() {
-  const selectedOption = furnitureType.options[furnitureType.selectedIndex];
-  previewImage.style.opacity = "0.25";
-  const newImage = selectedOption.dataset.image;
-  const imageLoader = new Image();
-  imageLoader.onload = () => {
-    previewImage.src = newImage;
-    previewImage.alt = "Vista ilustrativa de " + furnitureType.value + " en tela " + selectedFabric.name;
-    previewImage.style.opacity = "1";
-  };
-  imageLoader.onerror = () => { previewImage.style.opacity = "1"; };
-  imageLoader.src = newImage;
-  previewLabel.textContent = furnitureType.value + " · " + selectedFabric.name;
-}
-furnitureType.addEventListener("change", updatePreview);
-
-fabricChoices.forEach(choice => choice.addEventListener("click", () => {
-  selectedFabric = {
-    name: choice.dataset.fabric,
-    color: choice.dataset.color,
-    type: choice.dataset.type
-  };
-  fabricChoices.forEach(item => {
-    const selected = item === choice;
-    item.classList.toggle("selected", selected);
-    item.setAttribute("aria-pressed", String(selected));
-  });
-  colorName.textContent = "Tela seleccionada: " + selectedFabric.name;
-  updatePreview();
-}));
-
-toggleFabrics.addEventListener("click", () => {
-  const expanded = moreFabrics.classList.toggle("show");
-  toggleFabrics.setAttribute("aria-expanded", String(expanded));
-  toggleFabrics.textContent = expanded ? "Ver menos −" : "Ver más telas +";
+  link.href = "https://wa.me/5493515285779?text=" +
+    encodeURIComponent(message);
+  link.target = "_blank";
+  link.rel = "noopener";
 });
 
-document.getElementById("sendCustom").addEventListener("click", () => {
-  contactWhatsApp("Hola, Gonzalo Living. Quiero consultar por: " + furnitureType.value + ", con la tela de referencia " + selectedFabric.name + ". ¿Me pueden confirmar las telas disponibles, opciones, medidas y precios?");
-});
-
-// Before/after comparison sliders
-document.querySelectorAll(".compare").forEach(compare => {
-  const range = compare.querySelector('input[type="range"]');
-  function setSplit() { compare.style.setProperty("--split", range.value + "%"); }
-  range.addEventListener("input", setSplit);
-  setSplit();
-});
-
-// Reveal animations, with fallback
-const revealItems = document.querySelectorAll(".reveal");
-if ("IntersectionObserver" in window) {
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  revealItems.forEach(item => revealObserver.observe(item));
-} else {
-  revealItems.forEach(item => item.classList.add("visible"));
-}
+// AÑO AUTOMÁTICO
 document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 </body>
