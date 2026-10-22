@@ -420,6 +420,131 @@ footer {
 }
 .whatsapp-float:hover { transform: scale(1.07); }
 
+
+/* ANTES Y DESPUÉS DE RETAPIZADOS */
+.before-after-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.before-after-card {
+  background: #101010;
+  border: 1px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.comparison {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  --position: 50%;
+  background: #222;
+  isolation: isolate;
+}
+
+.comparison > img,
+.comparison-before,
+.comparison-before img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.comparison-after {
+  z-index: 0;
+}
+
+.comparison-before {
+  z-index: 1;
+  clip-path: inset(0 calc(100% - var(--position)) 0 0);
+}
+
+.comparison-before img {
+  max-width: none;
+}
+
+.comparison-label {
+  position: absolute;
+  z-index: 3;
+  top: 14px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background: #101010d9;
+  color: white;
+  font-size: .75rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  pointer-events: none;
+}
+
+.label-before { left: 12px; }
+.label-after { right: 12px; }
+
+.comparison-divider {
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  bottom: 0;
+  left: var(--position);
+  width: 3px;
+  background: #fff;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.comparison-divider span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background: var(--red);
+  color: white;
+  border: 2px solid white;
+  border-radius: 50%;
+  font-size: 1.25rem;
+}
+
+.comparison-range {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+}
+
+.comparison-range:focus-visible {
+  opacity: 1;
+  outline: 3px solid var(--red);
+  outline-offset: -5px;
+}
+
+.comparison-info {
+  padding: 18px;
+}
+
+.comparison-info h3 {
+  margin-bottom: 5px;
+}
+
+.comparison-info p {
+  color: #bdbdbd;
+  font-size: .9rem;
+}
+
 /* ADAPTACIÓN A PANTALLAS */
 @media(max-width:850px) {
   .nav-links { gap: 12px; font-size: .82rem; }
@@ -474,6 +599,11 @@ footer {
 @media(prefers-reduced-motion:reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }
+}
+@media (max-width: 680px) {
+  .before-after-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
@@ -703,6 +833,109 @@ footer {
   </div>
 </section>
 
+
+<!-- TRABAJOS DE RETAPIZADO: ANTES Y DESPUÉS -->
+<section id="retapizados" class="dark-section">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow">Nuestros trabajos</span>
+      <h2>Una nueva vida para tus muebles</h2>
+      <p>Deslizá el control para comparar el antes y el después de cada retapizado.</p>
+    </div>
+
+    <div class="before-after-grid">
+
+      <!-- TRABAJO 1 -->
+      <article class="before-after-card">
+        <div class="comparison" style="--position: 50%">
+          <img
+            class="comparison-after"
+            src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=85"
+            alt="Sillón después del retapizado"
+            loading="lazy">
+
+          <div class="comparison-before">
+            <img
+              src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1000&q=85"
+              alt="Sillón antes del retapizado"
+              loading="lazy">
+          </div>
+
+          <span class="comparison-label label-before">ANTES</span>
+          <span class="comparison-label label-after">DESPUÉS</span>
+
+          <div class="comparison-divider">
+            <span>↔</span>
+          </div>
+
+          <input
+            class="comparison-range"
+            type="range"
+            min="0"
+            max="100"
+            value="50"
+            aria-label="Deslizar para comparar el antes y el después">
+        </div>
+
+        <div class="comparison-info">
+          <h3>Renovación de sillón</h3>
+          <p>Una nueva apariencia para renovar el living.</p>
+        </div>
+      </article>
+
+      <!-- TRABAJO 2 -->
+      <article class="before-after-card">
+        <div class="comparison" style="--position: 50%">
+          <img
+            class="comparison-after"
+            src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=85"
+            alt="Dormitorio renovado"
+            loading="lazy">
+
+          <div class="comparison-before">
+            <img
+              src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1000&q=85"
+              alt="Dormitorio antes de la renovación"
+              loading="lazy">
+          </div>
+
+          <span class="comparison-label label-before">ANTES</span>
+          <span class="comparison-label label-after">DESPUÉS</span>
+
+          <div class="comparison-divider">
+            <span>↔</span>
+          </div>
+
+          <input
+            class="comparison-range"
+            type="range"
+            min="0"
+            max="100"
+            value="50"
+            aria-label="Deslizar para comparar el antes y el después">
+        </div>
+
+        <div class="comparison-info">
+          <h3>Renovación de ambiente</h3>
+          <p>Ideas para darle un nuevo estilo a tus espacios.</p>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="center">
+      <a
+        class="btn btn-red"
+        href="https://wa.me/5493515285779?text=Hola%2C%20quisiera%20consultar%20por%20un%20trabajo%20de%20retapizado."
+        target="_blank"
+        rel="noopener">
+        Consultar por retapizados
+      </a>
+    </div>
+  </div>
+</section>
+
+
 <!-- PREGUNTAS FRECUENTES -->
 <section id="preguntas">
   <div class="container">
@@ -722,8 +955,10 @@ footer {
     <div class="contact-panel">
       <div>
         <span class="eyebrow" style="color:#ffe0e2">Estamos para ayudarte</span>
-        <h2>¿Buscás renovar tu espacio?</h2>
-        <p>Consultanos por los muebles, telas y colores disponibles. Te ayudamos a encontrar una opción para tu hogar.</p>
+        <h2>¿Buscás renovar tu espacio?<br>
+          ¿Tenes alguna idea nueva?<br>
+        </h2>
+        <p>Consultanos por los muebles, telas, colores disponibles o la idea que quieras compartir. La hacemos real y te ayudamos a encontrar una opción para tu hogar.</p>
       </div>
       <a class="btn" href="https://wa.me/5493515285779" target="_blank" rel="noopener">Escribir por WhatsApp ↗</a>
     </div>
@@ -795,6 +1030,19 @@ footer {
    aria-label="Contactar por WhatsApp">☏</a>
 
 <script>
+/* CONTROL DESLIZABLE ANTES Y DESPUÉS */
+document.querySelectorAll(".comparison").forEach(comparison => {
+  const range = comparison.querySelector(".comparison-range");
+
+  function updateComparison() {
+    comparison.style.setProperty("--position", range.value + "%");
+  }
+
+  range.addEventListener("input", updateComparison);
+  updateComparison();
+});
+
+
 // SLIDER AUTOMÁTICO Y MANUAL
 const slides = [...document.querySelectorAll(".slide")];
 const dots = [...document.querySelectorAll(".dot")];
