@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -217,6 +216,110 @@ header {
 .category-info { position: absolute; z-index: 1; left: 20px; right: 15px; bottom: 18px; }
 .category-info h3 { font-size: 1.3rem; }
 .category-info p { color: #ddd; font-size: .9rem; }
+
+/* CORRECCIÓN DE LA SECCIÓN COMBOS */
+
+#combos {
+  background: #0b0b0b !important;
+  color: #fff;
+  padding: 70px 0;
+  overflow: hidden;
+}
+
+#combos .contenedor {
+  width: 92%;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+#combos .combos-encabezado {
+  max-width: 720px;
+  margin: 0 auto 35px;
+  text-align: center;
+}
+
+#combos .combos-encabezado h2 {
+  color: #fff;
+  font-size: clamp(28px, 4vw, 42px);
+  margin: 10px 0;
+}
+
+#combos .combos-encabezado p {
+  color: #bbb;
+}
+
+#combos .combos-grilla {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+#combos .combo-tarjeta {
+  min-width: 0;
+  background: #181818;
+  border: 1px solid #333;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+#combos .combo-foto {
+  width: 100%;
+  height: 240px;
+  position: relative;
+  overflow: hidden;
+}
+
+#combos .combo-foto img {
+  display: block;
+  width: 100% !important;
+  height: 240px !important;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+#combos .combo-contenido {
+  padding: 22px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#combos .combo-contenido h3 {
+  color: #fff;
+  font-size: 22px;
+}
+
+#combos .combo-descripcion,
+#combos .combo-lista li {
+  color: #ccc;
+}
+
+#combos .combo-precio {
+  color: #ff414b;
+  font-weight: bold;
+}
+
+#combos .combo-boton {
+  display: block;
+  width: 100%;
+  margin-top: auto;
+  padding: 12px;
+  text-align: center;
+  background: #c41622;
+  color: white;
+  border-radius: 7px;
+  font-weight: bold;
+}
+
+#combos .combo-aclaracion {
+  color: #aaa;
+  text-align: center;
+  margin-top: 25px;
+}
 
 /* CATÁLOGO */
 .dark-section { background: #151515; }
@@ -616,6 +719,7 @@ footer {
     <nav class="nav-links" id="navLinks">
       <a href="#inicio">Inicio</a>
       <a href="#categorias">Categorías</a>
+      <a href="#combos">Combos</a>
       <a href="#productos">Productos</a>
       <a href="#telas">Telas y colores</a>
       <a href="#nosotros">Nosotros</a>
@@ -693,11 +797,11 @@ footer {
     </div>
     <div class="cards">
       <a href="#productos" class="category-card" data-category-link="Sillones">
-        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80" alt="Sillones" loading="lazy">
+        <img src="sillon.jpeg" alt="Sillones" loading="lazy">
         <div class="category-info"><h3>Sillones</h3><p>Comodidad para compartir y descansar.</p></div>
       </a>
       <a href="#productos" class="category-card" data-category-link="Camas">
-        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80" alt="Camas y respaldos" loading="lazy">
+        <img src="cama nube.jpeg" alt="Camas y respaldos" loading="lazy">
         <div class="category-info"><h3>Camas y respaldos</h3><p>Un espacio pensado para relajarte.</p></div>
       </a>
       <a href="#productos" class="category-card" data-category-link="Sillas">
@@ -707,6 +811,139 @@ footer {
     </div>
   </div>
 </section>
+
+
+<!-- ===== SECCIÓN COMBOS ===== -->
+<section class="seccion-combos" id="combos">
+  <div class="contenedor">
+
+    <div class="combos-encabezado">
+      <span class="combos-etiqueta">Combinaciones para tu hogar</span>
+      <h2>Combos para disfrutar más</h2>
+      <p>
+        Muebles que combinan entre sí para renovar tus espacios.
+        Elegí tu conjunto favorito y consultanos por WhatsApp.
+      </p>
+    </div>
+
+    <div class="combos-grilla">
+
+      <!-- COMBO 1 -->
+      <article class="combo-tarjeta">
+        <div class="combo-foto">
+          <img
+            src="cama con respaldo.jpeg"
+            alt="Dormitorio con cama y respaldo tapizado"
+            loading="lazy">
+          <span class="combo-sello">COMBO 01</span>
+        </div>
+
+        <div class="combo-contenido">
+          <h3>Combo Dormitorio</h3>
+          <p class="combo-descripcion">
+            Un conjunto coordinado para darle personalidad
+            y comodidad a tu habitación.
+          </p>
+
+          <p class="combo-incluye-titulo">Este combo incluye:</p>
+          <ul class="combo-lista">
+            <li>Cama tapizada</li>
+            <li>Respaldo de cama</li>
+          </ul>
+
+          <p class="combo-precio">Precio a consultar</p>
+
+          <a
+            class="combo-boton"
+            href="https://wa.me/5493515285779?text=Hola%20Gonzalo%20Living%2C%20quiero%20consultar%20por%20el%20Combo%20Dormitorio%20(cama%20y%20respaldo)."
+            target="_blank"
+            rel="noopener noreferrer">
+            Consultar por WhatsApp ↗
+          </a>
+        </div>
+      </article>
+
+      <!-- COMBO 2 -->
+      <article class="combo-tarjeta">
+        <div class="combo-foto">
+          <img
+            src="esquinero.jpeg"
+            alt="Living con sillón tapizado"
+            loading="lazy">
+          <span class="combo-sello">COMBO 02</span>
+        </div>
+
+        <div class="combo-contenido">
+          <h3>Combo Esquinero</h3>
+          <p class="combo-descripcion">
+            Una combinación ideal para crear un ambiente
+            acogedor y aprovechar tu espacio.
+          </p>
+
+          <p class="combo-incluye-titulo">Este combo incluye:</p>
+          <ul class="combo-lista">
+            <li>Sillón</li>
+            <li>Banqueta tapizada</li>
+          </ul>
+
+          <p class="combo-precio">Precio a consultar</p>
+
+          <a
+            class="combo-boton"
+            href="https://wa.me/5493515285779?text=Hola%20Gonzalo%20Living%2C%20quiero%20consultar%20por%20el%20Combo%20Living%20(sillon%20y%20banqueta)."
+            target="_blank"
+            rel="noopener noreferrer">
+            Consultar por WhatsApp ↗
+          </a>
+        </div>
+      </article>
+
+      <!-- COMBO 3 -->
+      <article class="combo-tarjeta">
+        <div class="combo-foto">
+          <img
+            src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=900&q=85"
+            alt="Silla tapizada de diseño"
+            loading="lazy">
+          <span class="combo-sello">COMBO 03</span>
+        </div>
+
+        <div class="combo-contenido">
+          <h3>Combo Relax</h3>
+          <p class="combo-descripcion">
+            Un rincón especial para descansar, leer o
+            disfrutar de un momento tranquilo.
+          </p>
+
+          <p class="combo-incluye-titulo">Este combo incluye:</p>
+          <ul class="combo-lista">
+            <li>Sillón individual</li>
+            <li>Puf tapizado</li>
+          </ul>
+
+          <p class="combo-precio">Precio a consultar</p>
+
+          <a
+            class="combo-boton"
+            href="https://wa.me/5493515285779?text=Hola%20Gonzalo%20Living%2C%20quiero%20consultar%20por%20el%20Combo%20Relax%20(sillon%20individual%20y%20puf)."
+            target="_blank"
+            rel="noopener noreferrer">
+            Consultar por WhatsApp ↗
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="combo-aclaracion">
+      Los conjuntos se consultan por pedido. Las medidas, telas,
+      disponibilidad y precios se confirman por WhatsApp.
+    </p>
+
+  </div>
+</section>
+<!-- ===== FIN SECCIÓN COMBOS ===== -->
+
 
 <!-- PRODUCTOS -->
 <section id="productos" class="dark-section">
@@ -728,7 +965,7 @@ footer {
     </div>
     <div class="product-grid" id="productGrid">
       <article class="product-card" data-name="Sillón moderno" data-category="Sillones">
-        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80" alt="Sillón moderno" loading="lazy">
+        <img src="sillon.jpeg" alt="Sillón moderno" loading="lazy">
         <div class="product-info"><h3>Sillón moderno</h3><p>Una opción cómoda y elegante para tu living.</p><a class="btn btn-outline product-whatsapp" href="#">Consultar por WhatsApp</a></div>
       </article>
       <article class="product-card" data-name="Sillón clásico" data-category="Sillones">
@@ -740,7 +977,7 @@ footer {
         <div class="product-info"><h3>Camas tapizadas</h3><p>Diseños para crear un dormitorio acogedor.</p><a class="btn btn-outline product-whatsapp" href="#">Consultar por WhatsApp</a></div>
       </article>
       <article class="product-card" data-name="Respaldo de cama" data-category="Camas">
-        <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=800&q=80" alt="Respaldo de cama" loading="lazy">
+        <img src="respaldo negro.jpeg" alt="Respaldo de cama" loading="lazy">
         <div class="product-info"><h3>Respaldos</h3><p>Un detalle que aporta estilo y personalidad.</p><a class="btn btn-outline product-whatsapp" href="#">Consultar por WhatsApp</a></div>
       </article>
       <article class="product-card" data-name="Sillas tapizadas" data-category="Sillas">
