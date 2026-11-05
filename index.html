@@ -361,31 +361,231 @@ header {
 .empty-state { grid-column: 1 / -1; text-align: center; color: var(--gray); padding: 25px; }
 
 /* MUESTRARIO DE TELAS */
-.fabric-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 10px;
+
+/* ===== SECCIÓN DE TELAS ===== */
+
+.seccion-telas {
+    background: #0b0b0b;
+    color: white;
+    padding: 85px 8%;
 }
-.fabric-card {
-  background: #111;
-  border: 1px solid #383838;
-  border-radius: 10px;
-  overflow: hidden;
-  min-width: 0;
-  transition: border-color .2s, transform .2s;
+
+.telas-encabezado {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 45px;
 }
-.fabric-card:hover { border-color: var(--red); transform: translateY(-2px); }
-.fabric-card img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  background: #292929;
+
+.telas-etiqueta {
+    color: #c62828;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
 }
-.fabric-info { padding: 9px 8px 12px; }
-.fabric-info h3 { font-size: .92rem; line-height: 1.25; margin-bottom: 4px; }
-.fabric-info p { font-size: .78rem; color: #c3c3c3; line-height: 1.4; }
-.fabric-note { text-align: center; color: var(--gray); font-size: .85rem; margin-top: 20px; }
-.center { text-align: center; margin-top: 25px; }
+
+.telas-encabezado h2 {
+    font-size: 38px;
+    margin: 12px 0;
+}
+
+.telas-encabezado p {
+    color: #aaa;
+    line-height: 1.7;
+}
+
+.telas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    max-width: 1150px;
+    margin: auto;
+}
+
+.tela-card {
+    background: #181818;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tela-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 30px rgba(198, 40, 40, 0.15);
+}
+
+.tela-card img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    display: block;
+}
+
+.tela-card-info {
+    padding: 22px;
+}
+
+.tela-card-info h3 {
+    font-size: 22px;
+    margin: 0 0 8px;
+}
+
+.tela-card-info p {
+    color: #aaa;
+    font-size: 14px;
+}
+
+.tela-card-info span {
+    display: inline-block;
+    margin-top: 12px;
+    color: #e53935;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* ===== VENTANA DEL CATÁLOGO ===== */
+
+.modal-telas {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.modal-telas-contenido {
+    background: #171717;
+    color: white;
+    width: 100%;
+    max-width: 750px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 40px;
+    border-radius: 15px;
+    position: relative;
+    text-align: center;
+    border: 1px solid #333;
+}
+
+.cerrar-telas {
+    position: absolute;
+    right: 20px;
+    top: 12px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.modal-telas-contenido h2 {
+    font-size: 32px;
+    margin: 12px 0;
+}
+
+.modal-telas-contenido > p {
+    color: #aaa;
+    margin-bottom: 30px;
+}
+
+.colores-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.color-tela {
+    background: #222;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+    transition: 0.2s;
+}
+
+.color-tela:hover {
+    border-color: #c62828;
+}
+
+.color-tela.seleccionado {
+    border-color: #e53935;
+    background: #302020;
+}
+
+.muestra-color {
+    width: 100%;
+    height: 85px;
+    border-radius: 7px;
+    margin-bottom: 9px;
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+.nombre-color {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.consultar-tela {
+    display: inline-block;
+    background: #c62828;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.consultar-tela:hover {
+    background: #e53935;
+}
+
+/* ===== ADAPTACIÓN PARA CELULARES ===== */
+
+@media (max-width: 768px) {
+    .seccion-telas {
+        padding: 60px 5%;
+    }
+
+    .telas-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
+    }
+
+    .tela-card img {
+        height: 160px;
+    }
+
+    .tela-card-info {
+        padding: 15px;
+    }
+
+    .tela-card-info h3 {
+        font-size: 18px;
+    }
+
+    .modal-telas-contenido {
+        padding: 35px 18px 25px;
+    }
+
+    .colores-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+    .telas-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 
 /* NOSOTROS */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
@@ -1021,36 +1221,83 @@ footer {
 </section>
 
 <!-- MUESTRARIO DE TELAS -->
-<section id="telas">
-  <div class="container">
-    <div class="section-title">
-      <span class="eyebrow">Texturas y tonos</span>
-      <h2>Telas y colores disponibles</h2>
-      <p>Descubrí nuestro muestrario de telas para crear o retapizar.</p>
+
+<section id="telas" class="seccion-telas">
+    <div class="telas-encabezado">
+        <span class="telas-etiqueta">PERSONALIZÁ TU MUEBLE</span>
+        <h2>Catálogo de telas</h2>
+        <p>Elegí el tipo de tela y descubrí los diferentes colores disponibles para darle tu propio estilo a cada espacio.</p>
     </div>
-    <div class="fabric-grid">
-      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=80" alt="Lino gris" loading="lazy"><div class="fabric-info"><h3>Lino gris</h3><p>Textura natural</p></div></article>
-      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1600166898405-da9535204843?auto=format&fit=crop&w=400&q=80" alt="Bouclé crudo" loading="lazy"><div class="fabric-info"><h3>Bouclé crudo</h3><p>Suave y texturado</p></div></article>
-      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1550254478-9365d2e9f2c5?auto=format&fit=crop&w=400&q=80" alt="Terciopelo bordó" loading="lazy"><div class="fabric-info"><h3>Terciopelo bordó</h3><p>Brillo sutil</p></div></article>
-      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=400&q=80" alt="Lino beige" loading="lazy"><div class="fabric-info"><h3>Lino beige</h3><p>Neutro y cálido</p></div></article>
-      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=400&q=80" alt="Chenille azul" loading="lazy"><div class="fabric-info"><h3>Chenille azul</h3><p>Gama acogedora</p></div></article>
-      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=400&q=80" alt="Lino natural" loading="lazy"><div class="fabric-info"><h3>Lino natural</h3><p>Clásico</p></div></article>
-      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=400&q=80" alt="Terciopelo verde" loading="lazy"><div class="fabric-info"><h3>Terciopelo verde</h3><p>Profundo</p></div></article>
-      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=400&q=80" alt="Chenille arena" loading="lazy"><div class="fabric-info"><h3>Chenille arena</h3><p>Suave al tacto</p></div></article>
-      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=400&q=80" alt="Microfibra negra" loading="lazy"><div class="fabric-info"><h3>Microfibra negra</h3><p>Moderna</p></div></article>
-      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=400&q=80" alt="Lino azul" loading="lazy"><div class="fabric-info"><h3>Lino azul</h3><p>Fresco</p></div></article>
-      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1600166898405-da9535204843?auto=format&fit=crop&w=400&q=80" alt="Bouclé gris claro" loading="lazy"><div class="fabric-info"><h3>Bouclé gris claro</h3><p>Texturado</p></div></article>
-      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1550254478-9365d2e9f2c5?auto=format&fit=crop&w=400&q=80" alt="Terciopelo mostaza" loading="lazy"><div class="fabric-info"><h3>Terciopelo mostaza</h3><p>Cálido</p></div></article>
-      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=400&q=80" alt="Chenille chocolate" loading="lazy"><div class="fabric-info"><h3>Chenille chocolate</h3><p>Terroso</p></div></article>
-      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=400&q=80" alt="Microfibra gris" loading="lazy"><div class="fabric-info"><h3>Microfibra gris</h3><p>Práctica</p></div></article>
-      <article class="fabric-card"><img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=400&q=80" alt="Lino verde oliva" loading="lazy"><div class="fabric-info"><h3>Lino verde oliva</h3><p>Natural</p></div></article>
+
+    <div class="telas-grid">
+
+        <article class="tela-card" onclick="abrirCatalogo('lino')">
+            <img src="tela pana.jpeg" alt="Tela de lino">
+            <div class="tela-card-info">
+                <h3>Pana</h3>
+                <p>Suave y comoda para tu asiento</p>
+                <span>Explorar colores →</span>
+            </div>
+        </article>
+
+        <article class="tela-card" onclick="abrirCatalogo('boucle')">
+            <img src="tela cuerina.jpeg" alt="Tela bouclé">
+            <div class="tela-card-info">
+                <h3>Cuerina</h3>
+                <p>Textura suave y moderna.</p>
+                <span>Explorar colores →</span>
+            </div>
+        </article>
+
+        <article class="tela-card" onclick="abrirCatalogo('chenille')">
+            <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?w=600" alt="Tela chenille">
+            <div class="tela-card-info">
+                <h3>Chenille</h3>
+                <p>Suavidad y comodidad.</p>
+                <span>Explorar colores →</span>
+            </div>
+        </article>
+
+        <article class="tela-card" onclick="abrirCatalogo('terciopelo')">
+            <img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?w=600" alt="Tela terciopelo">
+            <div class="tela-card-info">
+                <h3>Terciopelo</h3>
+                <p>Elegancia y personalidad.</p>
+                <span>Explorar colores →</span>
+            </div>
+        </article>
+
+        <article class="tela-card" onclick="abrirCatalogo('microfibra')">
+            <img src="https://images.unsplash.com/photo-1615874694520-474822394e73?w=600" alt="Tela microfibra">
+            <div class="tela-card-info">
+                <h3>Microfibra</h3>
+                <p>Práctica y confortable.</p>
+                <span>Explorar colores →</span>
+            </div>
+        </article>
+
     </div>
-    <p class="fabric-note">Consultá por WhatsApp para confirmar las telas, colores y disponibilidad reales.</p>
-    <div class="center">
-      <a class="btn btn-red" href="https://wa.me/5493515285779?text=Hola%2C%20quisiera%20consultar%20por%20las%20telas%20disponibles." target="_blank" rel="noopener">Consultar telas por WhatsApp</a>
-    </div>
-  </div>
 </section>
+
+<!-- VENTANA DEL CATÁLOGO -->
+<div id="modalTelas" class="modal-telas">
+    <div class="modal-telas-contenido">
+
+        <button class="cerrar-telas" onclick="cerrarCatalogo()">×</button>
+
+        <span class="telas-etiqueta">GONZALO LIVING</span>
+        <h2 id="tituloTela">Lino</h2>
+        <p id="descripcionTela">Elegí el color que más te guste.</p>
+
+        <div id="coloresTela" class="colores-grid"></div>
+
+        <a id="consultarTela" class="consultar-tela" href="#" target="_blank">
+            Consultar por WhatsApp
+        </a>
+
+    </div>
+</div>
+
 
 <!-- NOSOTROS -->
 <section id="nosotros" class="dark-section">
@@ -1115,13 +1362,13 @@ footer {
         <div class="comparison" style="--position: 50%">
           <img
             class="comparison-after"
-            src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=85"
+            src="retapizadod.jpeg"
             alt="Sillón después del retapizado"
             loading="lazy">
 
           <div class="comparison-before">
             <img
-              src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1000&q=85"
+              src="retapizado.jpeg"
               alt="Sillón antes del retapizado"
               loading="lazy">
           </div>
@@ -1153,7 +1400,7 @@ footer {
         <div class="comparison" style="--position: 50%">
           <img
             class="comparison-after"
-            src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=85"
+            src=""
             alt="Dormitorio renovado"
             loading="lazy">
 
@@ -1294,132 +1541,348 @@ footer {
    target="_blank" rel="noopener"
    aria-label="Contactar por WhatsApp">☏</a>
 
+
 <script>
-/* CONTROL DESLIZABLE ANTES Y DESPUÉS */
-document.querySelectorAll(".comparison").forEach(comparison => {
-  const range = comparison.querySelector(".comparison-range");
+document.addEventListener("DOMContentLoaded", function () {
 
-  function updateComparison() {
-    comparison.style.setProperty("--position", range.value + "%");
-  }
+    // ==========================================
+    // 1. MODAL DE BIENVENIDA
+    // ==========================================
 
-  range.addEventListener("input", updateComparison);
-  updateComparison();
+    function abrirModal() {
+        const modal = document.getElementById("miModal");
+        if (modal) modal.style.display = "block";
+    }
+
+    function cerrarModal() {
+        const modal = document.getElementById("miModal");
+        if (modal) modal.style.display = "none";
+    }
+
+    window.abrirModal = abrirModal;
+    window.cerrarModal = cerrarModal;
+
+    const modalBienvenida = document.getElementById("miModal");
+
+    if (modalBienvenida) {
+        modalBienvenida.addEventListener("click", function(event) {
+            if (event.target === modalBienvenida) {
+                cerrarModal();
+            }
+        });
+    }
+
+
+    // ==========================================
+    // 2. BUSCADOR INTELIGENTE DE PRODUCTOS
+    // ==========================================
+
+    const busqueda = document.getElementById("busqueda");
+
+    function normalizarTexto(texto) {
+        return texto
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/[^\w\s]/g, " ")
+            .trim();
+    }
+
+    function distanciaEdicion(a, b) {
+        const tabla = Array.from(
+            { length: a.length + 1 },
+            () => Array(b.length + 1).fill(0)
+        );
+
+        for (let i = 0; i <= a.length; i++) {
+            tabla[i][0] = i;
+        }
+
+        for (let j = 0; j <= b.length; j++) {
+            tabla[0][j] = j;
+        }
+
+        for (let i = 1; i <= a.length; i++) {
+            for (let j = 1; j <= b.length; j++) {
+                const costo = a[i - 1] === b[j - 1] ? 0 : 1;
+
+                tabla[i][j] = Math.min(
+                    tabla[i - 1][j] + 1,
+                    tabla[i][j - 1] + 1,
+                    tabla[i - 1][j - 1] + costo
+                );
+            }
+        }
+
+        return tabla[a.length][b.length];
+    }
+
+    function coincidePalabra(busqueda, nombre) {
+        if (nombre.includes(busqueda)) return true;
+
+        if (busqueda.length < 4) return false;
+
+        const palabras = nombre.split(/\s+/);
+
+        return palabras.some(palabra => {
+            const tolerancia = busqueda.length >= 8 ? 2 : 1;
+
+            // También permite encontrar fragmentos con errores.
+            for (let i = 0; i <= palabra.length - busqueda.length + tolerancia; i++) {
+                const fragmento = palabra.slice(
+                    i,
+                    i + busqueda.length
+                );
+
+                if (distanciaEdicion(busqueda, fragmento) <= tolerancia) {
+                    return true;
+                }
+            }
+
+            return distanciaEdicion(busqueda, palabra) <= tolerancia;
+        });
+    }
+
+    function actualizarProductos() {
+        if (!busqueda) return;
+
+        const texto = normalizarTexto(busqueda.value);
+        const palabras = texto.split(/\s+/).filter(Boolean);
+
+        document.querySelectorAll(".product-card").forEach(producto => {
+            const nombre = normalizarTexto(
+                (producto.dataset.name || "") + " " +
+                (producto.querySelector("h3")?.textContent || "") + " " +
+                (producto.querySelector("p")?.textContent || "")
+            );
+
+            const coincide = palabras.every(palabra =>
+                coincidePalabra(palabra, nombre)
+            );
+
+            producto.style.display = coincide ? "" : "none";
+        });
+    }
+
+    if (busqueda) {
+        busqueda.addEventListener("input", actualizarProductos);
+    }
+
+
+    // ==========================================
+    // 3. CATÁLOGO DE TELAS
+    // ==========================================
+
+    const catalogoTelas = {
+        lino: {
+            nombre: "Lino",
+            descripcion: "Descubrí los colores de nuestra colección de lino.",
+            colores: [
+                { nombre: "Natural", color: "#D9CBB5" },
+                { nombre: "Gris", color: "#A9A9A5" },
+                { nombre: "Beige", color: "#E9DFCE" },
+                { nombre: "Azul", color: "#526B82" },
+                { nombre: "Verde oliva", color: "#69765A" },
+                { nombre: "Negro", color: "#292929" }
+            ]
+        },
+
+        boucle: {
+            nombre: "Bouclé",
+            descripcion: "Texturas acogedoras y modernas.",
+            colores: [
+                { nombre: "Crudo", color: "#E8E0D1" },
+                { nombre: "Gris claro", color: "#C6C6C2" },
+                { nombre: "Gris oscuro", color: "#777875" },
+                { nombre: "Arena", color: "#C9B69A" },
+                { nombre: "Negro", color: "#292929" }
+            ]
+        },
+
+        chenille: {
+            nombre: "Chenille",
+            descripcion: "Suavidad y comodidad para tus muebles.",
+            colores: [
+                { nombre: "Azul", color: "#405C7A" },
+                { nombre: "Arena", color: "#D6C4A8" },
+                { nombre: "Chocolate", color: "#614638" },
+                { nombre: "Gris", color: "#92928E" },
+                { nombre: "Natural", color: "#E4D8C4" }
+            ]
+        },
+
+        terciopelo: {
+            nombre: "Terciopelo",
+            descripcion: "Colores intensos y elegantes.",
+            colores: [
+                { nombre: "Bordó", color: "#722F3E" },
+                { nombre: "Verde", color: "#345B45" },
+                { nombre: "Mostaza", color: "#C49A35" },
+                { nombre: "Azul noche", color: "#263A56" },
+                { nombre: "Negro", color: "#252525" }
+            ]
+        },
+
+        microfibra: {
+            nombre: "Microfibra",
+            descripcion: "Una alternativa práctica y confortable.",
+            colores: [
+                { nombre: "Negro", color: "#242424" },
+                { nombre: "Gris", color: "#888888" },
+                { nombre: "Beige", color: "#D6C5A8" },
+                { nombre: "Marrón", color: "#75543E" }
+            ]
+        }
+    };
+
+    let telaSeleccionada = "";
+    let colorSeleccionado = "";
+
+    function abrirCatalogo(tipo) {
+        const tela = catalogoTelas[tipo];
+
+        if (!tela) return;
+
+        const modal = document.getElementById("modalTelas");
+        const titulo = document.getElementById("tituloTela");
+        const descripcion = document.getElementById("descripcionTela");
+        const contenedor = document.getElementById("coloresTela");
+
+        if (!modal || !titulo || !descripcion || !contenedor) {
+            console.error("Faltan elementos del catálogo de telas en el HTML.");
+            return;
+        }
+
+        telaSeleccionada = tela.nombre;
+        colorSeleccionado = "";
+
+        titulo.textContent = tela.nombre;
+        descripcion.textContent = tela.descripcion;
+
+        contenedor.innerHTML = "";
+
+        tela.colores.forEach(color => {
+            const tarjeta = document.createElement("button");
+
+            tarjeta.type = "button";
+            tarjeta.className = "color-tela";
+
+            const muestra = document.createElement("div");
+            muestra.className = "muestra-color";
+            muestra.style.backgroundColor = color.color;
+
+            const nombre = document.createElement("span");
+            nombre.className = "nombre-color";
+            nombre.textContent = color.nombre;
+
+            tarjeta.appendChild(muestra);
+            tarjeta.appendChild(nombre);
+
+            tarjeta.addEventListener("click", function() {
+                document.querySelectorAll(".color-tela").forEach(item => {
+                    item.classList.remove("seleccionado");
+                });
+
+                tarjeta.classList.add("seleccionado");
+                colorSeleccionado = color.nombre;
+
+                actualizarConsulta();
+            });
+
+            contenedor.appendChild(tarjeta);
+        });
+
+        actualizarConsulta();
+
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+
+    function actualizarConsulta() {
+        const boton = document.getElementById("consultarTela");
+
+        if (!boton) return;
+
+        const mensaje = colorSeleccionado
+            ? `Hola, quisiera consultar por la tela ${telaSeleccionada} en color ${colorSeleccionado}.`
+            : `Hola, quisiera consultar por los colores disponibles de la tela ${telaSeleccionada}.`;
+
+        boton.href =
+            "https://wa.me/5493515285779?text=" +
+            encodeURIComponent(mensaje);
+    }
+
+    function cerrarCatalogo() {
+        const modal = document.getElementById("modalTelas");
+
+        if (modal) {
+            modal.style.display = "none";
+            document.body.style.overflow = "";
+        }
+    }
+
+    window.abrirCatalogo = abrirCatalogo;
+    window.cerrarCatalogo = cerrarCatalogo;
+
+    const modalTelas = document.getElementById("modalTelas");
+
+    if (modalTelas) {
+        modalTelas.addEventListener("click", function(event) {
+            if (event.target === modalTelas) {
+                cerrarCatalogo();
+            }
+        });
+    }
+
+
+    // ==========================================
+    // 4. CERRAR VENTANAS CON LA TECLA ESCAPE
+    // ==========================================
+
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+            cerrarCatalogo();
+            cerrarModal();
+        }
+    });
+
+
+    // ==========================================
+    // 5. AÑO AUTOMÁTICO DEL FOOTER
+    // ==========================================
+
+    const anio = document.getElementById("anio");
+
+    if (anio) {
+        anio.textContent = new Date().getFullYear();
+    }
+
 });
+    // ==========================================
+    // COMPARADOR DE IMÁGENES: ANTES Y DESPUÉS
+    // ==========================================
 
+    document.querySelectorAll(".comparison").forEach(comparacion => {
 
-// SLIDER AUTOMÁTICO Y MANUAL
-const slides = [...document.querySelectorAll(".slide")];
-const dots = [...document.querySelectorAll(".dot")];
-let currentSlide = 0;
-let sliderTimer;
+        const control = comparacion.querySelector(".comparison-range");
 
-function showSlide(index) {
-  currentSlide = (index + slides.length) % slides.length;
-  slides.forEach((slide, i) =>
-    slide.classList.toggle("active", i === currentSlide)
-  );
-  dots.forEach((dot, i) =>
-    dot.classList.toggle("active", i === currentSlide)
-  );
-}
+        if (!control) return;
 
-function restartSlider() {
-  clearInterval(sliderTimer);
-  sliderTimer = setInterval(() => showSlide(currentSlide + 1), 6000);
-}
+        function actualizarComparacion() {
+            comparacion.style.setProperty(
+                "--position",
+                control.value + "%"
+            );
+        }
 
-document.getElementById("prevSlide").addEventListener("click", () => {
-  showSlide(currentSlide - 1);
-  restartSlider();
-});
+        control.addEventListener("input", actualizarComparacion);
+        control.addEventListener("change", actualizarComparacion);
 
-document.getElementById("nextSlide").addEventListener("click", () => {
-  showSlide(currentSlide + 1);
-  restartSlider();
-});
+        actualizarComparacion();
+    });
 
-dots.forEach(dot => dot.addEventListener("click", () => {
-  showSlide(Number(dot.dataset.slide));
-  restartSlider();
-}));
-
-restartSlider();
-
-// MENÚ PARA CELULARES
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
-
-menuToggle.addEventListener("click", () => {
-  const open = navLinks.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", String(open));
-  menuToggle.textContent = open ? "✕" : "☰";
-});
-
-navLinks.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.textContent = "☰";
-  });
-});
-
-// BÚSQUEDA Y FILTROS
-const searchInput = document.getElementById("productSearch");
-const categoryFilter = document.getElementById("categoryFilter");
-const productCards = [...document.querySelectorAll(".product-card")];
-
-function filterProducts() {
-  const query = searchInput.value.trim().toLocaleLowerCase("es");
-  const category = categoryFilter.value;
-  let visible = 0;
-
-  productCards.forEach(card => {
-    const name = card.dataset.name.toLocaleLowerCase("es");
-    const matches = name.includes(query) &&
-      (category === "Todos" || card.dataset.category === category);
-
-    card.classList.toggle("hidden", !matches);
-    if (matches) visible++;
-  });
-
-  let empty = document.getElementById("emptyProducts");
-
-  if (!empty) {
-    empty = document.createElement("p");
-    empty.id = "emptyProducts";
-    empty.className = "empty-state hidden";
-    empty.textContent = "No encontramos productos con esa búsqueda.";
-    document.getElementById("productGrid").appendChild(empty);
-  }
-
-  empty.classList.toggle("hidden", visible > 0);
-}
-
-searchInput.addEventListener("input", filterProducts);
-categoryFilter.addEventListener("change", filterProducts);
-
-// FILTRAR AL ELEGIR UNA CATEGORÍA
-document.querySelectorAll("[data-category-link]").forEach(link => {
-  link.addEventListener("click", () => {
-    categoryFilter.value = link.dataset.categoryLink;
-    filterProducts();
-  });
-});
-
-// WHATSAPP PARA CADA PRODUCTO
-document.querySelectorAll(".product-whatsapp").forEach(link => {
-  const name = link.closest(".product-card").dataset.name;
-  const message = `Hola, quisiera consultar por ${name}. ¿Me podrían informar el precio y la disponibilidad?`;
-
-  link.href = "https://wa.me/5493515285779?text=" +
-    encodeURIComponent(message);
-  link.target = "_blank";
-  link.rel = "noopener";
-});
-
-// AÑO AUTOMÁTICO
-document.getElementById("year").textContent = new Date().getFullYear();
 </script>
+
+
 </body>
 </html>
